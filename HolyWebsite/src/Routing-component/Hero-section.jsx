@@ -3,6 +3,7 @@ import React from "react";
 import HeroImg from "../assets/hero-section/hero-img.svg";
 import HeroLogo from "../assets/hero-section/UCB.svg";
 import CountdownSection from "../Components/Countdown-section";
+import HighlightsSection from "../Components/Highlights-Section";
 import "./Hero-section.css";
 
 export default function HeroSection() {
@@ -44,6 +45,7 @@ export default function HeroSection() {
         </div>
       </section>
       <CountdownSection></CountdownSection>
+      <HighlightsSection></HighlightsSection>
     </>
   );
 }
