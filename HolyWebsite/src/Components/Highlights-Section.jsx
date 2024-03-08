@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Safety from "../assets/highlights-section/Safety.svg";
 import Location from "../assets/highlights-section/Location.svg";
 import Theme from "../assets/highlights-section/Theme.svg";
@@ -64,7 +65,37 @@ const HighlightsSection = () => {
                   <img src={Drinks} alt="" />
                 </div>
               </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
+                  <p>Free Lunch</p>
+                  <span>+ Access to Food stalls</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Food} alt="" />
+                </div>
+              </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
+                  <p>Rain Dance</p>
+                  <span>+ 5+ paid Activities</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Activity} alt="" />
+                </div>
+              </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
+                  <p>DJ Concert </p>
+                  <span>Non stop party!</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Music} alt="" />
+                </div>
+              </div>
             </div>
+            <Link to="/payment" style={{ textDecoration: "none" }}>
+              <button className="highlights-btn">Book Tickets Now</button>
+            </Link>
           </div>
         </div>
       </section>

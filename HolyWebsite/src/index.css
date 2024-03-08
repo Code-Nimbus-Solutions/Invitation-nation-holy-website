@@ -55,4 +55,8 @@ body {
   html {
     font-size: 50%;
   }
+
+  .nimbus-container {
+    padding: 0 1.6rem;
+  }
 }
