@@ -5,9 +5,25 @@ import HeroLogo from "../assets/hero-section/UCB.svg";
 import CountdownSection from "../Components/Countdown-section";
 import HighlightsSection from "../Components/Highlights-Section";
 import ScheduleSection from "../Components/Schedule-section";
+import Accordion from "../Components/Accordion";
 import "./Hero-section.css";
 
 export default function HeroSection() {
+  const items = [
+    {
+      title: "Section 1",
+      content: "Content for section 1",
+    },
+    {
+      title: "Section 2",
+      content: "Content for section 2",
+    },
+    {
+      title: "Section 3",
+      content: "Content for section 3",
+    },
+  ];
+
   return (
     <>
       <section id="hero-section">
@@ -48,6 +64,10 @@ export default function HeroSection() {
       <CountdownSection></CountdownSection>
       <HighlightsSection></HighlightsSection>
       <ScheduleSection></ScheduleSection>
+      <div className="">
+        <h1>Accordion Example</h1>
+        <Accordion items={items} />
+      </div>
     </>
   );
 }
