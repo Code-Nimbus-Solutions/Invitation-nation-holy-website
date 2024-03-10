@@ -1,18 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-<<<<<<< HEAD
 import './App.css'
 import HeroSection from './Routing-component/Hero-section'
 import Payment from './Routing-component/Payment';
 import Paymentsucess from './Component/payment-sucess';
 import PaymentFail from './Component/payment-fail';
-=======
-import "./App.css";
-import HeroSection from "./Routing-component/Hero-section";
-import Payment from "./Routing-component/Payment";
 import Dashboard from "./Routing-component/Dashboard";
 import Login from "./Routing-component/Login";
->>>>>>> origin/home-page
+
 
 function App() {
   return (
