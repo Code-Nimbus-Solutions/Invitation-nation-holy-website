@@ -1,0 +1,139 @@
+#highlights-section {
+  padding: 9.6rem 0;
+}
+
+.hightlights-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.highlights-title {
+  font-family: Heaters;
+  font-size: 6.4rem;
+  font-weight: 400;
+  text-align: center;
+  color: #36bcff;
+}
+
+.highlights-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.highlights-element {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.highlights-element-title {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 275;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #fff;
+  background: linear-gradient(
+    0deg,
+    rgba(25, 137, 193, 0.61) -0.6%,
+    rgba(153, 153, 153, 0) 100%
+  );
+  border-bottom: 2.2px solid #1989c1;
+  padding: 1rem 2.4rem;
+}
+
+.highlights-element-img {
+  position: relative;
+}
+
+.highlights-element-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.highlights-element-text-box {
+  position: absolute;
+  width: 90%;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.highlights-element-text-box p {
+  font-family: Passion One;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.highlights-element-text-box span {
+  font-family: Poppins;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: left;
+  color: black;
+}
+
+.highlights-details-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.highlights-details-element {
+  background: linear-gradient(
+      0deg,
+      rgba(156, 156, 156, 0.2),
+      rgba(156, 156, 156, 0.2)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 37.5%,
+      rgba(20, 109, 153, 0.152) 72.81%,
+      rgba(25, 137, 193, 0.268) 100%
+    );
+
+  display: flex;
+  gap: 2rem;
+  padding: 3rem;
+  border-radius: 9px;
+}
+
+.highlights-details-info-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.highlights-details-info-box p {
+  font-family: Passion One;
+  font-size: 1.8rem;
+  text-align: left;
+}
+
+.highlights-details-info-box span {
+  font-family: Poppins;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.highlights-btn {
+  background: #1989c1;
+  color: white;
+  font-family: Passion One;
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 1rem 4.8rem;
+  cursor: pointer;
+  margin-top: 4rem;
+}
