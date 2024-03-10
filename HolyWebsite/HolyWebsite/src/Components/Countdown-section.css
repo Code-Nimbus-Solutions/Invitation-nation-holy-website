@@ -1,0 +1,66 @@
+#count-down-section {
+  padding: 4.8rem;
+  background-color: #1989c1;
+}
+
+.count-down-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.count-down-timer-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.count-down-timer-title {
+  font-family: Passion One;
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-align: left;
+  color: #005d8b;
+}
+
+.count-down-timer-value {
+  font-family: Passion One;
+  font-size: 10rem;
+  font-weight: 700;
+  text-align: left;
+  color: #fff;
+}
+
+.count-down-price-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.count-down-price-title {
+  font-family: Passion One;
+  font-size: 3.2rem;
+  font-weight: 700;
+  text-align: left;
+  color: #005d8b;
+}
+
+.count-down-price-value {
+  font-family: Passion One;
+  font-size: 10rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.count-down-price-value s {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.count-down-price-box span {
+  font-family: Poppins;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: right;
+  color: #005d8b;
+}
