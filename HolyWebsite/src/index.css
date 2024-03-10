@@ -1,6 +1,71 @@
+<<<<<<< HEAD
 *{
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+}
   
+=======
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255);
+  background-color: #000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.nimbus-container {
+  padding: 0 3.6rem;
+  margin: 0 auto;
+  max-width: 128rem;
+}
+
+@font-face {
+  font-family: Aemstel;
+  src: url(../src/assets/fonts/Aemstel-Regular.ttf);
+}
+
+@font-face {
+  font-family: Heaters;
+  src: url(../src/assets/fonts/Heaters.otf);
+}
+
+@media (width<=900px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (width<=650px) {
+  html {
+    font-size: 50%;
+  }
+
+  .nimbus-container {
+    padding: 0 1.6rem;
+  }
+
 }

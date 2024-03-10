@@ -1,0 +1,40 @@
+#analytics-section {
+  padding: 9.6rem 0;
+}
+
+.analytics-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.analytics-element {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+#dashboard-section {
+  padding: 9.6rem 0;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.dashboard-header,
+.dashboard-element {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.dashboard-header li,
+.dashboard-element li {
+  list-style: none;
+}
