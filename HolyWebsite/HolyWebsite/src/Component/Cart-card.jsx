@@ -13,7 +13,7 @@ export default function CartCard({ productName }) {
 
   useEffect(() => {
     // Fetch offer data from the API
-    fetch('http://192.168.68.102:8080/rest/api/public')
+    fetch('https://holi.invitationnation.in/rest/api/public')
       .then(response => response.json())
       .then(data => setOfferData(data))
       .catch(error => console.error('Error fetching offer data:', error));

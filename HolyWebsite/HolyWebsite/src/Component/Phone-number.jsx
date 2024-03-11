@@ -38,7 +38,7 @@ export default function PhoneNumber({ purchasedData }) {
     };
 
     // Send request to API to send OTP
-    fetch('http://192.168.68.102:8080/rest/api/public/user-validation-request', {
+    fetch('https://holi.invitationnation.in/rest/api/public/user-validation-request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ export default function PhoneNumber({ purchasedData }) {
     };
   
     // Send a POST request to verify the OTP
-    fetch('http://192.168.68.102:8080/rest/api/public/user-validation', {
+    fetch('https://holi.invitationnation.in/rest/api/public/user-validation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

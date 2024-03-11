@@ -121,7 +121,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData }) {
     };
   
     // Make the POST request to the API
-    fetch('http://192.168.68.102:8080/rest/api/public/process-user', {
+    fetch('https://holi.invitationnation.in/rest/api/public/process-user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
