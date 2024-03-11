@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import '../CSSfiles/Sucess.css'
 export default function Paymentsucess(){
     return(
@@ -7,9 +6,7 @@ export default function Paymentsucess(){
                 <div className="image-container">
                     <div className="sucess-card-container">
                        <img src="" alt="" className="sucess" />
-                       <Link to='/scan'>
-                        <button>Scanner</button>
-                       </Link>
+                       
                     </div>
                     
                 </div>
