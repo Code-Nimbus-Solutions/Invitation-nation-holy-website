@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../CSSfiles/Cart.css';
 import productsData from './Card-Data';
 import PhoneNumber from './Phone-number';
-import AgeVerify from './AgeVerify'; // Assuming you have implemented AgeVerify component
+import AgeVerify from './Ageverify'; // Assuming you have implemented AgeVerify component
 
 export default function CartCard({ productName }) {
   const [quantity, setQuantity] = useState(new Array(productsData.length).fill(0));
