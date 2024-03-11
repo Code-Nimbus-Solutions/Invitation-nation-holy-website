@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../CSSfiles/Phone.css';
 import AgeVerify from './Ageverify';
 
-export default function PhoneNumber({ purchasedData }) {
+export default function PhoneNumber({ purchasedData ,productName}) {
   const [timer, setTimer] = useState(60);
   const [isButtonActive, setIsButtonActive] = useState(true);
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ export default function PhoneNumber({ purchasedData }) {
     };
 
     // Send request to API to send OTP
-    fetch('https://holi.invitationnation.in/rest/api/public/user-validation-request', {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/user-validation-request`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ export default function PhoneNumber({ purchasedData }) {
     };
   
     // Send a POST request to verify the OTP
-    fetch('https://holi.invitationnation.in/rest/api/public/user-validation', {
+    fetch('http://192.168.0.105:8080/rest/api/public/user-validation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -112,7 +112,8 @@ export default function PhoneNumber({ purchasedData }) {
     <div className="Phone-main-section">
       <div className="phone-container"> 
         {isInputsFilled ? (
-          <AgeVerify purchasedData={purchasedData} />
+          <AgeVerify purchasedData={purchasedData} mailId={formData.Mailid} productName={productName} />
+
         ) : (
           <>
             <div className="main-phone-card">
