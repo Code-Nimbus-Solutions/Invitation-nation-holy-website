@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../CSSfiles/AgeVerify.css'; // Import the CSS file for styling
 import { Link } from 'react-router-dom';
 
-export default function AgeVerify({ purchasedData, setPurchasedData }) {
+export default function AgeVerify({ purchasedData, setPurchasedData, mailId,productName }) {
   const [activeTab, setActiveTab] = useState('details');
   const [formDataDetails, setFormDataDetails] = useState({
     Phonenumber: '',
@@ -107,21 +107,34 @@ export default function AgeVerify({ purchasedData, setPurchasedData }) {
     console.log('Coupon Code:', couponCode);
     // Here you can also send the coupon data to the server if needed
   };
-
   const handleNextClick = () => {
     // Prepare the data object to be sent
+    const foodArray = [];
+    
+    // Push 'VEG' into foodArray based on vegCount
+    for (let i = 0; i < formDataDetails.vegCount; i++) {
+      foodArray.push('NOTOPTED');
+    }
+    
+    // Push 'NONVEG' into foodArray based on nonVegCount
+    for (let i = 0; i < formDataDetails.nonVegCount; i++) {
+      foodArray.push('NONVEG');
+    }
+    
     const postData = {
-      email: formDataDetails.Mailid,
-      pass_selected: ['pass_type_1', 'pass_type_2'],
+      email: mailId,
+      pass_selected: ["pass_type_1","pass_type_2"],
       age: formDataDetails.age,
       phone: formDataDetails.Phonenumber,
-      food: ['NONVEG', 'NOTOPTED'],
-      bravery: ['yes', 'yes'],
-      tshirt: ['yes', 'yes']
+      food: foodArray,
+      bravery: ["yes", "yes"],
+      tshirt: ["yes", "yes"]
     };
-  
+    
+    console.log('Data to be sent:', postData); // Log the data before making the request
+    
     // Make the POST request to the API
-    fetch('https://holi.invitationnation.in/rest/api/public/process-user', {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/process-user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -132,20 +145,34 @@ export default function AgeVerify({ purchasedData, setPurchasedData }) {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      // Assuming response is JSON, you can process it here if needed
       return response.json();
     })
     .then(data => {
-      // Handle successful response
-      console.log('Post request successful:', data);
-      // Redirect or perform any additional actions after successful post
+      if (data && data.responceId === 'OS') {
+        // Handle successful operation
+        console.log('Operation successful:', data.responce);
+        // Update UI to reflect the successful operation
+        // For example, you can show a success message to the user
+        alert('Operation successful: ' + data.responce);
+        // Reset any form data or state if needed
+      } else {
+        // Handle other responses or errors
+        console.error('Operation failed:', data.responce);
+        alert('Operation failed: ' + data.responce);
+      }
     })
     .catch(error => {
-      // Handle error
-      console.error('Error posting data:', error);
+      // Handle other errors
+      console.error('Error:', error);
+      alert('An error occurred. Please try again later.');
     });
   };
-
+  
+  
+  
+  
+  
+  
   return (
     <div className="main-age-section">
       <div className="main-age-container">
@@ -192,17 +219,17 @@ export default function AgeVerify({ purchasedData, setPurchasedData }) {
                   <div className="veg-vegsection">
                     <p>No of veg lunch</p>
                     <div className="dynamic-part">
-                      <button className="minus" onClick={handleDecrementVeg}>-</button>
-                      <h1>{formDataDetails.vegCount}</h1>
-                      <button className="plus" onClick={handleIncrementVeg}>+</button>
+                      <button className="minus" value="NOTOPTED" onClick={handleDecrementVeg}>-</button>
+                      <h1 value="NOTOPTED">{formDataDetails.vegCount}</h1>
+                      <button className="plus" value="NOTOPTED" onClick={handleIncrementVeg}>+</button>
                     </div>
                   </div>
                   <div className="nonvegsection">
                     <p>No of Non-veg lunch</p>
                     <div className="dynamic-part">
-                      <button className="minus" onClick={handleDecrementNonVeg}>-</button>
+                      <button className="minus" value="NONVEG" onClick={handleDecrementNonVeg}>-</button>
                       <h1 >{formDataDetails.nonVegCount}</h1>
-                      <button className="plus" onClick={handleIncrementNonVeg}>+</button>
+                      <button className="plus" value="NONVEG" onClick={handleIncrementNonVeg}>+</button>
                     </div>
                   </div>
                 </div>
@@ -260,11 +287,11 @@ export default function AgeVerify({ purchasedData, setPurchasedData }) {
           </div>
         </div>
       </div>
-      {paymentSuccessful? <Link to='/sucsess'><button className="Next-ph" onClick={handleNextClick}>
+      {paymentSuccessful? <button className="Next-ph" onClick={handleNextClick}>
         Pay Now
-      </button></Link>:<Link to='/'><button className="Next-ph" onClick={handleNextClick}>
+      </button>:<button className="Next-ph" onClick={handleNextClick}>
         Pay Now
-      </button></Link>}
+      </button>}
       
      
     </div>
