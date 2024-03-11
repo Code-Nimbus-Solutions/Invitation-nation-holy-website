@@ -5,7 +5,7 @@ import HeroLogo from "../assets/hero-section/UCB.svg";
 import CountdownSection from "../Components/Countdown-section";
 import HighlightsSection from "../Components/Highlights-Section";
 import ScheduleSection from "../Components/Schedule-section";
-import Accordion from "../Components/Accordion";
+import ControlledAccordions from "../Components/Accordion";
 import "./Hero-section.css";
 
 export default function HeroSection() {
@@ -66,7 +66,8 @@ export default function HeroSection() {
       <ScheduleSection></ScheduleSection>
       <div className="">
         <h1>Accordion Example</h1>
-        <Accordion items={items} />
+        <ControlledAccordions/>
+       
       </div>
     </>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../CSSfiles/Phone.css';
 import AgeVerify from './Ageverify';
 
-export default function PhoneNumber({ purchasedData }) {
+export default function PhoneNumber({ purchasedData ,productName}) {
   const [timer, setTimer] = useState(60);
   const [isButtonActive, setIsButtonActive] = useState(true);
   const [formData, setFormData] = useState({
@@ -112,7 +112,8 @@ export default function PhoneNumber({ purchasedData }) {
     <div className="Phone-main-section">
       <div className="phone-container"> 
         {isInputsFilled ? (
-          <AgeVerify purchasedData={purchasedData} />
+          <AgeVerify purchasedData={purchasedData} mailId={formData.Mailid} productName={productName} />
+
         ) : (
           <>
             <div className="main-phone-card">

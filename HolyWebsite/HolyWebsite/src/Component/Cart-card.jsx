@@ -45,8 +45,11 @@ export default function CartCard({ productName }) {
         return;
       }
   
-      const updatedData = [...purchasedData, { productName, quantity: productQuantity, price: product.price }];
-      setPurchasedData(updatedData);
+      // Prepare the purchased item with the product name and quantity
+      const purchasedItem = { productName, quantity: productQuantity, price: product.price };
+  
+      // Add the purchased item to the purchasedData array
+      setPurchasedData(prevData => [...prevData, purchasedItem]);
   
       // Reset quantity to 0 after adding to cart
       const newQuantity = [...quantity];
@@ -69,12 +72,25 @@ export default function CartCard({ productName }) {
       alert('Please add at least one product to proceed');
       return;
     }
-    
-    // Fetch and display purchased data
-    console.log('Purchased Data:', purchasedData);
-    // You can further process the purchased data here
+  
+    // Prepare the packages array
+    const packages = [];
+  
+    // Iterate over purchased data to create packages
+    purchasedData.forEach(item => {
+      const { productName, quantity } = item;
+      for (let i = 0; i < quantity; i++) {
+        packages.push({ productName });
+      }
+    });
+  
+    // Log the packages
+    console.log('Packages:', packages);
+  
+    // Set the current state to 'input'
     setCurrentState('input');
   };
+  
 
   return (
     <div className="main-cart-card">
@@ -82,36 +98,36 @@ export default function CartCard({ productName }) {
         {currentState === 'display' ? (
           <>
             {productsData.map((product, index) => (
-             
               <React.Fragment key={index}>
                 {offerData && Object.keys(offerData.pass_price).map((type, i) => (
-                      <><option key={i} value={type}>{type} - ₹{offerData.pass_price[type]}</option><div className="cart-card">
-                    <div className="product-name">
-                      <h1>{product.productName}</h1>
-                      <h2>₹{product.price}</h2> {/* Display the product price */}
-                    </div>
-                    <div className="order-basket">
-                      <div className="quantity-controls">
-                        <button onClick={() => handleDecrement(index)}>-</button>
-                        <span className="quantity">{quantity[index] || 0}</span>
-                        <button onClick={() => handleIncrement(index)}>+</button>
+                  <>
+                    <div className="cart-card" key={i}>
+                      <div className="product-name">
+                        <h1 value={product.productName}>{product.productName}</h1>
+                        <h2>₹{product.price}</h2> {/* Display the product price */}
                       </div>
-                      <button className="add-button" onClick={() => handleAddToCart(product.productName, index)}>Add</button>
+                      <div className="order-basket">
+                        <div className="quantity-controls">
+                          <button onClick={() => handleDecrement(index)}>-</button>
+                          <span className="quantity">{quantity[index] || 0}</span>
+                          <button onClick={() => handleIncrement(index)}>+</button>
+                        </div>
+                        <button className="add-button" onClick={() => handleAddToCart(product.productName, index)}>Add</button>
+                      </div>
                     </div>
-                  </div><div className="dropdown-container">
+                    <div className="dropdown-container">
                       <select className="dropdown" value={selectedOption} onChange={handleOptionChange}>
                         <option value="choose">See what's included</option>
-
                       </select>
-                    </div></>
-                    ))}
-               
-              </React.Fragment> 
+                    </div>
+                  </>
+                ))}
+              </React.Fragment>
             ))}
             <button className="next" onClick={handleNextClick}>Next</button>
           </>
         ) : (
-          <PhoneNumber purchasedData={purchasedData}/>
+          <PhoneNumber purchasedData={purchasedData} productName={productName}/>
         )}
       </div>
     </div>
