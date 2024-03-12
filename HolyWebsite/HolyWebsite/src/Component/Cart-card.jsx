@@ -4,7 +4,7 @@ import PhoneNumber from './Phone-number';
 
 export default function CartCard({ productName }) {
   const [quantity, setQuantity] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('choose');
+  const [selectedOption, setSelectedOption] = useState(`See what's included`);
   const [purchasedData, setPurchasedData] = useState([]);
   const [currentState, setCurrentState] = useState('display'); // 'display' or 'input'
   const [offerData, setOfferData] = useState(null); // State to store offer data
@@ -160,10 +160,10 @@ export default function CartCard({ productName }) {
                   </div>
                   {openDropdowns[i] && (
                     <div className="dropdown-list">
-                      <div><i className="fa-solid fa-check"></i>  Free lunch ( Veg & Non veg )</div>
-                      <div><i className="fa-solid fa-check"></i>  Free Organic Colors</div>
-                      <div><i className="fa-solid fa-check"></i>  Free Access to Rain dance</div>
-                      <div><i className="fa-solid fa-check"></i>  Access to Paid Fun Activities</div>
+                      <div><i className="fa-solid fa-check"></i>   Free lunch ( Veg & Non veg )</div>
+                      <div><i className="fa-solid fa-check"></i>   Free Organic Colors</div>
+                      <div><i className="fa-solid fa-check"></i>   Free Access to Rain dance</div>
+                      <div><i className="fa-solid fa-check"></i>   Access to Paid Fun Activities</div>
                       <div className='Priced'><i className="fa-solid fa-check"></i>  Free Drink</div>
                       <div className='Priced'><i className="fa-solid fa-check"></i>  Free T-shirt ( White )</div>
                     </div>
