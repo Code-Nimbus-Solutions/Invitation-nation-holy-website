@@ -296,48 +296,51 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
                 </div>
               </div>
             )}
-            {activeTab === 'payment' && (
-              <div>
-                {/* Render purchased data */}
-                <ul>
-                  
-                 
-                    <div className="main-payment" >
-                      <div className="Product">
-                      <p>Passes purchased:</p>
-                      <p>
-                        {confirmationData.pass_selected.length}
-                      </p>
-                      </div>
-                    </div>
-               
-                </ul>
-                {/* Display confirmation data */}
-                {confirmationData && (
-                  <div className="main-payment">
-                    <div className="subtotal"> <p>Subtotal: </p><p>₹{confirmationData.subtotal}</p></div>
-                   <div className="gst"> <p>GST: </p><p>₹{confirmationData.gst}</p></div>
-                   <div className="handling"><p> Handling fee:</p><p>₹{confirmationData.handling_fee}</p></div>
-                   <div className="total"><p>Total: </p><p>₹{confirmationData.total}</p></div>
-                    
-                    
-                  </div>
-                )}
-                <div className="razor-pay">
-                  <h3>Pay by razorpay</h3>
-                </div>
-                <div className="coupons-input">
-                  <input
-                    type="text"
-                    placeholder="Coupon Code"
-                    className="coupon"
-                    value={couponCode}
-                    onChange={(e) => setCouponCode(e.target.value)}
-                  />
-                  <button onClick={handleApplyCoupon}>Apply </button>
-                </div>
-              </div>
-            )}
+        {activeTab === 'payment' && confirmationData && (
+  <div>
+    {/* Render purchased data */}
+    <ul>
+      {confirmationData.pass_selected.map((pass, index) => (
+        <li key={index}>
+          {pass}
+        </li>
+      ))}
+    </ul>
+    {/* Display confirmation data */}
+    <div className="main-payment">
+      <div className="subtotal">
+        <p>Subtotal: </p>
+        <p>₹{confirmationData.subtotal}</p>
+      </div>
+      <div className="gst">
+        <p>GST: </p>
+        <p>₹{confirmationData.gst}</p>
+      </div>
+      <div className="handling">
+        <p>Handling fee:</p>
+        <p>₹{confirmationData.handling_fee}</p>
+      </div>
+      <div className="total">
+        <p>Total: </p>
+        <p>₹{confirmationData.total}</p>
+      </div>
+    </div>
+    <div className="razor-pay">
+      <h3>Pay by razorpay</h3>
+    </div>
+    <div className="coupons-input">
+      <input
+        type="text"
+        placeholder="Coupon Code"
+        className="coupon"
+        value={couponCode}
+        onChange={(e) => setCouponCode(e.target.value)}
+      />
+      <button onClick={handleApplyCoupon}>Apply </button>
+    </div>
+  </div>
+)}
+
           </div>
         </div>
       </div>
@@ -348,9 +351,10 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
         Next
       </button>
     ) : (
-      <button className="Next-ph1"  disabled={paymentInProgress}>
+      <Link to='/sucsess'> <button className="Next-ph1"  disabled={paymentInProgress}>
         Pay Now
-      </button>
+      </button></Link>
+     
     )}
   </div>
     </div>
