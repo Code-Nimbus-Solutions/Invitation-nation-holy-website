@@ -1,10 +1,16 @@
+*{
+    font-family: "Montserrat", sans-serif;
+}
 .main-phone-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.203) 0px 0px 2px 2px;
+    border-radius: 1.25rem;
+    background-color: aliceblue;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.752) 5px 5px 5px 5px;
+    margin-top: 2rem;
 
 }
 
@@ -13,17 +19,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .ph-card-content h2 {
     position: relative;
-    font-size: 20px;
-    padding: 1rem;
-    border-radius: 1rem 1rem 0rem 0rem;
-    background-color: rgb(230, 226, 226);
-
+    font-size: 12px;
+    padding: 2rem;
+    border-radius: 1.25rem 1.25rem 0rem 0rem;
+    background-color: #DDDDDD;
+    font-weight: 400;
     text-align: center;
+    width: 100%;
 
 }
 
@@ -32,14 +39,18 @@
     flex-direction: column;
     border-radius: 1rem;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .ph-card-content p {
-    font-size: 15px;
+    text-align: center;
+    font-size: 12px;
     text-align: center;
     font-weight: 600;
-    padding: 1rem;
+    padding: 2rem;
     color: blueviolet;
+    width: 80%;
 }
 
 .details-fld {
@@ -59,19 +70,31 @@
     height: 50%;
     padding: 0.5rem;
     border-radius: 0.3rem;
-    border: 1px solid rgb(132, 127, 127);
+    border: 1px solid #999999;
+    background-color: transparent;
+    color: #000;
 }
 
 .otp-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding-top: 0.5rem;
 }
 
 .otp-section input {
     padding: 0.3rem;
+   
     height: 20px;
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #999999;
+}
+.otp-main{
+    display: flex;
+    float: left;
+    width: 80%;
+    padding-top: 0.5rem;
 }
 
 .otp-section button {
@@ -84,22 +107,53 @@
 
 .otp-description {
     text-align: center;
-    font-size: 15px;
-    padding: 1rem;
-}
-.otp-timer{
+    font-size: 10px;
+    font-weight: 700;
     padding: 1rem;
 }
 
+.otp-timer {
+    padding: 1rem;
+    font-size: 12px;
+}
+
 .Next-ph {
-    width: 20rem;
+    width: 30rem;
     font-size: 40px;
+    margin: 5rem;
+    height: 92px;
     padding: 0.5rem;
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 15px;
     color: #000000;
     background-color: white;
-    box-shadow: #000000 2px 2px 0px 0px;
+    box-shadow: #000000 5px 5px 5px 5px;
     border: 1px solid black;
     cursor: pointer;
+  
+}
+.Next-ph {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style for when input fields are filled */
+  .Next-ph.filled {
+    background-color: green;
+  }
+  
+  /* Disabled style */
+  .Next-ph[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+@media(width<600px){
+    .Next-ph{
+        width: 100%;
+    }
 }

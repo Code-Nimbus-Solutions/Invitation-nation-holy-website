@@ -1,0 +1,49 @@
+#accordion-section {
+    padding: 9.6rem 0;
+  }
+  
+  .accordian-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .accordion-element {
+    margin-bottom: 2rem;
+    border-radius: 20px !important;
+    border: 1px solid #1989c1;
+    background-color: black !important;
+    color: white !important;
+  }
+  
+  .accordion-heading {
+    font-family: Poppins !important;
+    font-size: 2rem !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+  }
+  
+  .accordion-icon {
+    fill: #fff !important;
+    width: 2em !important;
+    height: 2em !important;
+  }
+  
+  .accordion-text {
+    font-family: Poppins !important;
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    text-align: left;
+  }
+  
+  .accordian-link {
+    text-decoration: none;
+    color: #fff !important;
+    cursor: pointer;
+  }
+  
+  @media (width<=650px) {
+    .accordion-heading {
+      width: 80% !important;
+    }
+  }

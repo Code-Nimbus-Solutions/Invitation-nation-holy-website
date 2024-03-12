@@ -1,17 +1,19 @@
 .tabs {
     display: flex;
     cursor: pointer;
-    width: 90vw;
+    width: 100%;
     justify-content: center;
     text-align: center;
     align-items: center;
-    border-radius: 0.5rem;
+    border-radius:10px 10px 0px 0px ;
     background-color: rgb(216, 216, 216);
+    font-size: 12px;
 }
 
 .tabs .active {
     background-color: rgb(255, 255, 255);
-    border-bottom: 5px solid purple;
+    border-bottom: 5px solid #1989C1;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .main-container-age {
@@ -20,8 +22,9 @@
     justify-content: center;
     align-items: center;
     width: 90vw;
-    box-shadow: rgba(0, 0, 0, 0.105) 2px 2px 2px 2px;
+    box-shadow: rgba(0, 0, 0, 0.849) 5px 5px 5px 5px;
     border-radius: 0.5rem;
+    margin: 2rem;
 
 }
 
@@ -31,6 +34,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    color: black;
+    padding: 1rem;
 }
 
 .main-input-container {
@@ -44,6 +49,9 @@
     width: 70vw;
     padding: 0.6rem;
     border-radius: 0.3rem;
+    border: 1px black solid;
+    color: black;
+    background-color: transparent;
 }
 
 .details {
@@ -94,9 +102,8 @@
     padding: 1rem;
 }
 .product-price{
-    width: 50%;
     padding: 1rem;
-    text-align: center;
+    
 }
 
 .Product {
@@ -127,7 +134,7 @@
 }
 .coupons-input input{
     padding: 0.5rem;
-    height: 10px;
+    border: 1px solid black;
 }
 .coupons-input button{
     width: auto;
@@ -136,3 +143,70 @@
     text-align: center;
     padding: 2rem;
 }
+
+.subtotal{
+    display: flex;
+    justify-content: space-between;
+}
+.handling{
+    display: flex;
+    justify-content: space-between;
+}
+.tab-content{
+    background-color: rgb(255, 255, 255);
+    color: black;
+    width: 100%;
+    border-radius: 0px 0px 10px 10px ;
+    padding: 3rem;
+    font-size: 12px;
+}
+.Product{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  
+
+}
+.Product p{
+    text-align: left;
+    
+}
+.Next-ph1 {
+    width: 30rem;
+    font-size: 40px;
+    margin: 5rem;
+    height: 92px;
+    padding: 0.5rem;
+    font-weight: 600;
+    border-radius: 15px;
+    color: #000000;
+    background-color: #008A38;
+    box-shadow: #000000 5px 5px 0px 5px;
+    border: none;
+    cursor: pointer;
+  }
+  .Next-ph2 {
+    width: 30rem;
+    font-size: 40px;
+    margin: 5rem;
+    height: 92px;
+    padding: 0.5rem;
+    font-weight: 600;
+    border-radius: 15px;
+    color: #000000;
+    background-color: #FF5338;
+    box-shadow: #000000 5px 5px 0px 5px;
+    border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    
+  }
+
+  @media(width<37.5rem){
+    .Next-ph1{
+        width: 40rem;
+    }
+    .Next-ph2{
+        width: 40rem;
+    }
+  }

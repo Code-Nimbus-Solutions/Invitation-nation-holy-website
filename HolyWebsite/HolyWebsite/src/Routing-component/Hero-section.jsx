@@ -5,8 +5,9 @@ import HeroLogo from "../assets/hero-section/UCB.svg";
 import CountdownSection from "../Components/Countdown-section";
 import HighlightsSection from "../Components/Highlights-Section";
 import ScheduleSection from "../Components/Schedule-section";
-import Accordion from "../Components/Accordion";
+import ControlledAccordions from "../Components/Accordion";
 import "./Hero-section.css";
+import Footer from "../Components/Footer";
 
 export default function HeroSection() {
   const items = [
@@ -51,7 +52,7 @@ export default function HeroSection() {
                 </p>
                 <div className="hero-date-box">
                   <span className="hero-date-day">Sunday </span>
-                  <span className="hero-date-date">25th March, 2024</span>
+                  <span className="hero-date-date">24th March, 2024</span>
                 </div>
                 <Link to="/payment" style={{ textDecoration: "none" }}>
                   <button className="hero-btn">Book Tickets Now</button>
@@ -64,10 +65,8 @@ export default function HeroSection() {
       <CountdownSection></CountdownSection>
       <HighlightsSection></HighlightsSection>
       <ScheduleSection></ScheduleSection>
-      <div className="">
-        <h1>Accordion Example</h1>
-        <Accordion items={items} />
-      </div>
+      <ControlledAccordions />
+      <Footer></Footer>
     </>
   );
 }

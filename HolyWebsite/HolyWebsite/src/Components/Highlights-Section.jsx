@@ -7,6 +7,10 @@ import Drinks from "../assets/highlights-section/drinks.svg";
 import Food from "../assets/highlights-section/food.svg";
 import Activity from "../assets/highlights-section/activity.svg";
 import Music from "../assets/highlights-section/music.svg";
+import Organic from "../assets/highlights-section/organic.svg";
+import TShirt from "../assets/highlights-section/t-shirt.svg";
+import Surprise from "../assets/highlights-section/surprise.svg";
+import Coupon from "../assets/highlights-section/coupon.svg";
 import "./Highlights-Section.css";
 
 const HighlightsSection = () => {
@@ -76,6 +80,24 @@ const HighlightsSection = () => {
               </div>
               <div className="highlights-details-element">
                 <div className="highlights-details-info-box">
+                  <p>DJ Concert </p>
+                  <span>Non stop party!</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Music} alt="" />
+                </div>
+              </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
+                  <p>Free Organic Colors</p>
+                  <span>for a safe holi</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Organic} alt="" />
+                </div>
+              </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
                   <p>Rain Dance</p>
                   <span>+ 5+ paid Activities</span>
                 </div>
@@ -85,11 +107,29 @@ const HighlightsSection = () => {
               </div>
               <div className="highlights-details-element">
                 <div className="highlights-details-info-box">
-                  <p>DJ Concert </p>
-                  <span>Non stop party!</span>
+                  <p>Free White T-shirt</p>
+                  <span>with premium tickets</span>
                 </div>
                 <div className="highlights-details-img">
-                  <img src={Music} alt="" />
+                  <img src={TShirt} alt="" />
+                </div>
+              </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
+                  <p>Surprise awaits</p>
+                  <span>Fun surprise at the end</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Surprise} alt="" />
+                </div>
+              </div>
+              <div className="highlights-details-element">
+                <div className="highlights-details-info-box">
+                  <p>Free gift coupons</p>
+                  <span>Worth ₹ 1000</span>
+                </div>
+                <div className="highlights-details-img">
+                  <img src={Coupon} alt="" />
                 </div>
               </div>
             </div>
