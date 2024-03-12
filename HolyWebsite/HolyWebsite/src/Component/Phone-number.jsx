@@ -2,15 +2,24 @@ import React, { useState, useEffect } from 'react';
 import '../CSSfiles/Phone.css';
 import AgeVerify from './Ageverify';
 
-export default function PhoneNumber({ purchasedData ,productName}) {
+export default function PhoneNumber({ purchasedData ,productName,  packagesData, BeverageData, TshirtData }) {
   const [timer, setTimer] = useState(60);
   const [isButtonActive, setIsButtonActive] = useState(true);
-  const [formData, setFormData] = useState({
-    name: '',
-    Mailid: '',
-    otp: ''
+  const [formData, setFormData] = useState(() => {
+    // Initialize form data from localStorage if available
+    const savedData = localStorage.getItem('phoneNumberFormData');
+    return savedData ? JSON.parse(savedData) : {
+      name: '',
+      Mailid: '',
+      otp: ''
+    };
   });
   const [isInputsFilled, setIsInputsFilled] = useState(false);
+
+  useEffect(() => {
+    // Save form data to localStorage whenever it changes
+    localStorage.setItem('phoneNumberFormData', JSON.stringify(formData));
+  }, [formData]);
 
   useEffect(() => {
     let interval;
@@ -83,9 +92,9 @@ export default function PhoneNumber({ purchasedData ,productName}) {
       name: formData.name,
       otp: formData.otp
     };
-  
+  console.log(postData)
     // Send a POST request to verify the OTP
-    fetch('http://192.168.0.105:8080/rest/api/public/user-validation', {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/user-validation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -112,7 +121,7 @@ export default function PhoneNumber({ purchasedData ,productName}) {
     <div className="Phone-main-section">
       <div className="phone-container"> 
         {isInputsFilled ? (
-          <AgeVerify purchasedData={purchasedData} mailId={formData.Mailid} productName={productName} />
+          <AgeVerify purchasedData={purchasedData} mailId={formData.Mailid} productName={productName}  packagesData={packagesData}  BeverageData={BeverageData} TshirtData={TshirtData} />
 
         ) : (
           <>
@@ -127,16 +136,22 @@ export default function PhoneNumber({ purchasedData ,productName}) {
                 <label htmlFor="mail-id">Mail id<span>*</span></label>
                 <input type="text" name="Mailid" className="mail-id" placeholder='mail id' value={formData.Mailid} onChange={handleInputChange}  />
               </div>
-              <div className="otp-section">
-                <input type="text" name="otp" className='otpnumber'  value={formData.otp} onChange={handleInputChange} />
+              <div className="otp-main">
+                 <div className="otp-section">
+                <input type="text" name="otp" className='otpnumber' placeholder='4 digit OTP'  value={formData.otp} onChange={handleInputChange} />
                 <button className='send-otp' disabled={!isButtonActive} onClick={handleSendOTP}>
                   {isButtonActive ? <p className='otp-active'>Send OTP</p> : <p className='no-otp'>Send OTP</p>}
                 </button>
               </div>
+              </div>
+             
               <p className='otp-description'>OTP has been sent to your Phone Number</p>
               <p className='otp-timer'>Resend OTP in {timer}secs</p>
             </div>
-            <button className='Next-ph' onClick={handleNextClick}>Next</button>
+           
+               <button className={`Next-ph ${isInputsFilled ? 'filled' : ''}`} onClick={handleNextClick}>Next</button>
+        
+           
           </>
         )}
       </div>

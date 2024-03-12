@@ -1,5 +1,5 @@
 #count-down-section {
-  padding: 4.8rem;
+  padding: 4.8rem 0;
   background-color: #1989c1;
 }
 
@@ -7,6 +7,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 .count-down-timer-box {
@@ -63,4 +64,30 @@
   font-weight: 500;
   text-align: right;
   color: #005d8b;
+}
+
+@media (width<=1050px) {
+  .count-down-timer-value,
+  .count-down-price-value {
+    font-size: 8rem;
+  }
+}
+
+@media (width<=750px) {
+  .count-down-timer-value,
+  .count-down-price-value {
+    font-size: 5rem;
+  }
+
+  .count-down-timer-title,
+  .count-down-price-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media (width<=750px) {
+  .count-down-timer-value,
+  .count-down-price-value {
+    font-size: 3.5rem;
+  }
 }

@@ -15,7 +15,7 @@
     color: rgb(0, 0, 0);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.262) 5px 5px 5px 5px;
+    box-shadow: rgba(0, 0, 0, 0.859) 5px 5px 5px 5px;
 
     display: flex;
     flex-direction: column;
@@ -40,9 +40,9 @@
 }
 
 .discount h1 {
-    color: #8F26CF;
+    color: #1989C1;
     font-family: monospace;
-    font-size: 50px;
+    font-size: 40px;
     background-color: transparent;
  
 }
@@ -77,7 +77,7 @@ span{
 
 @media(width<600px) {
     .countercard {
-        width: 80%;
+        width: 100%;
     }
     .countercard p{
         font-size: 10px;

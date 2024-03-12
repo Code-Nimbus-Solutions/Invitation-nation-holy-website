@@ -1,0 +1,110 @@
+#preloader {
+    z-index: 6 !important;
+    background: black !important;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .animate {
+    display: none;
+  }
+  
+  .line {
+    width: 80%;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7 !important;
+  }
+  
+  .preloader-blue,
+  .preloader-red,
+  .preloader-purple {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+  }
+  
+  .preloader-blue {
+    z-index: 4;
+    background: #1989c1;
+  }
+  
+  .preloader-red {
+    z-index: 3;
+    background: #ff0068;
+  }
+  
+  .preloader-purple {
+    z-index: 2;
+    background: #e700ec;
+  }
+  
+  .preloader-blue.animation {
+    animation: animation-blue 1s ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  .preloader-red.animation {
+    animation: animation-red 1s ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  .preloader-purple.animation {
+    animation: animation-purple 1s ease-in;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes animation-black {
+    from {
+      display: block;
+    }
+  
+    to {
+      display: none;
+    }
+  }
+  
+  @keyframes animation-blue {
+    from {
+      transform: translateY(0);
+      display: block;
+    }
+  
+    to {
+      transform: translateY(-100vh);
+      display: none;
+    }
+  }
+  
+  @keyframes animation-red {
+    from {
+      transform: translateY(0);
+      display: block;
+    }
+  
+    to {
+      transform: translateY(-100vh);
+      display: none;
+    }
+  }
+  
+  @keyframes animation-purple {
+    from {
+      transform: translateY(0);
+      display: block;
+    }
+  
+    to {
+      transform: translateY(-100vh);
+      display: none;
+    }
+  }

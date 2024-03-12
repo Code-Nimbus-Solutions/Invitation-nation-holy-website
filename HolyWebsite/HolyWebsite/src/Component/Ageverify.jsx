@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../CSSfiles/AgeVerify.css'; // Import the CSS file for styling
 import { Link } from 'react-router-dom';
 
-export default function AgeVerify({ purchasedData, setPurchasedData, mailId,productName }) {
+export default function AgeVerify({ purchasedData, setPurchasedData, mailId, productName, packagesData ,BeverageData, TshirtData}) {
   const [activeTab, setActiveTab] = useState('details');
   const [formDataDetails, setFormDataDetails] = useState({
     Phonenumber: '',
@@ -16,6 +16,8 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
   const [paymentSuccessful, setPaymentSuccessful] = useState(true);
   const [totalQuantity, setTotalQuantity] = useState(0); // State to store total quantity
   const [limit, setLimit] = useState(0); // State to store the limit for both veg and non-veg lunches
+  const [confirmationData, setConfirmationData] = useState(null); // State to store confirmation data
+  const [paymentInProgress, setPaymentInProgress] = useState(false); 
 
   useEffect(() => {
     // Calculate subtotal and total price whenever purchasedData changes
@@ -42,10 +44,46 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
     setLimit(total);
   }, [purchasedData]);
 
+  useEffect(() => {
+    fetchConfirmationData();
+  }, [mailId]);
+  
+  // Fetch confirmation data function
+  const fetchConfirmationData = () => {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/process-user-confirmation`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: mailId
+      })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Fetched Confirmation Data:", data); // Log fetched data
+        setConfirmationData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching confirmation data:', error);
+        // Handle error
+      });
+  };
+
   const handleMailIdChange = (e) => {
+    let value = e.target.value.trim(); // Remove leading and trailing spaces
+    // Ensure only digits are entered
+    value = value.replace(/\D/g, '');
+    // Ensure length does not exceed 10 characters
+    value = value.slice(0, 10);
     setFormDataDetails((prevData) => ({
       ...prevData,
-      Phonenumber: e.target.value,
+      Phonenumber: value,
     }));
   };
 
@@ -70,7 +108,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
       }));
     }
   };
-  
+
   const handleIncrementNonVeg = () => {
     // Check if total quantity is less than the limit
     if (formDataDetails.vegCount + formDataDetails.nonVegCount < limit) {
@@ -80,7 +118,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
       }));
     }
   };
-  
+
   const handleDecrementVeg = () => {
     if (formDataDetails.vegCount > 0) {
       setFormDataDetails((prevData) => ({
@@ -89,7 +127,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
       }));
     }
   };
-  
+
   const handleDecrementNonVeg = () => {
     if (formDataDetails.nonVegCount > 0) {
       setFormDataDetails((prevData) => ({
@@ -102,38 +140,53 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
   const handleApplyCoupon = () => {
     // Capture the coupon input data once "Apply" button is clicked
     if (!couponCode) {
-      alert("enter  a valid code");
+      alert("enter a valid code");
     }
     console.log('Coupon Code:', couponCode);
     // Here you can also send the coupon data to the server if needed
   };
   const handleNextClick = () => {
+    if (paymentInProgress) {
+      return; // Do nothing if payment is already in progress
+    }
+    if (!confirmationData) {
+      // If confirmation data is not fetched yet, return and wait for it
+      alert('Please wait while we fetch confirmation data.');
+      return;
+    }
+  setActiveTab('payment')
+    setPaymentInProgress(true); // Set payment in progress
+  
+    if (formDataDetails.vegCount + formDataDetails.nonVegCount !== totalQuantity) {
+      alert('Please select the correct number of packages for both Veg and Non-Veg.');
+      setActiveTab('details')
+      setPaymentInProgress(false); // Reset payment progress state
+      return;
+    }
+  
     // Prepare the data object to be sent
     const foodArray = [];
-    
     // Push 'VEG' into foodArray based on vegCount
     for (let i = 0; i < formDataDetails.vegCount; i++) {
       foodArray.push('NOTOPTED');
     }
-    
     // Push 'NONVEG' into foodArray based on nonVegCount
     for (let i = 0; i < formDataDetails.nonVegCount; i++) {
       foodArray.push('NONVEG');
     }
-    
     const postData = {
       email: mailId,
-      pass_selected: ["pass_type_1","pass_type_2"],
+      pass_selected: packagesData,
       age: formDataDetails.age,
       phone: formDataDetails.Phonenumber,
       food: foodArray,
-      bravery: ["yes", "yes"],
-      tshirt: ["yes", "yes"]
+      bravery: BeverageData,
+      tshirt: TshirtData
     };
-    
+  
     console.log('Data to be sent:', postData); // Log the data before making the request
-    
-    // Make the POST request to the API
+  
+    // Make the POST request to the second API endpoint
     fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/process-user`, {
       method: 'POST',
       headers: {
@@ -141,38 +194,46 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
       },
       body: JSON.stringify(postData)
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data && data.responceId === 'OS') {
-        // Handle successful operation
-        console.log('Operation successful:', data.responce);
-        // Update UI to reflect the successful operation
-        // For example, you can show a success message to the user
-        alert('Operation successful: ' + data.responce);
-        // Reset any form data or state if needed
-      } else {
-        // Handle other responses or errors
-        console.error('Operation failed:', data.responce);
-        alert('Operation failed: ' + data.responce);
-      }
-    })
-    .catch(error => {
-      // Handle other errors
-      console.error('Error:', error);
-      alert('An error occurred. Please try again later.');
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data && data.responceId === 'OS') {
+          // Handle successful operation
+          console.log('Operation successful:', data.responce);
+          // Update UI to reflect the successful operation
+          // For example, you can show a success message to the user
+          alert('Operation successful: ' + data.responce);
+  
+          // After the second API request is completed successfully,
+          // fetch confirmation data and then set the active tab to 'payment'
+          fetchConfirmationData()
+            .then(() => {
+              setActiveTab('payment');
+            })
+            .catch(error => {
+              console.error('Error fetching confirmation data:', error);
+              // Handle error if fetching confirmation data fails
+            });
+        } else {
+          // Handle other responses or errors from the second API request
+          console.error('Operation failed:', data.responce);
+          alert('Operation failed: ' + data.responce);
+        }
+      })
+      .catch(error => {
+        // Handle other errors from the second API request
+        console.error('Error:', error);
+       
+      })
+      .finally(() => {
+        setPaymentInProgress(false); // Reset payment progress state
+      });
   };
-  
-  
-  
-  
-  
-  
+
   return (
     <div className="main-age-section">
       <div className="main-age-container">
@@ -239,36 +300,29 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
               <div>
                 {/* Render purchased data */}
                 <ul>
-                  <div className="main-heading">
-                  <p>Product </p>
-                    <p>Subtotal</p>
-                  </div>
-                  {purchasedData.map((item, index) => (
-                    <div className="main-payment" key={index}>
+                  
+                 
+                    <div className="main-payment" >
                       <div className="Product">
-                        <p className="Product-name" key={index}>
-                          {item.productName} × {item.quantity}
-                        </p>
-                        <p className="product-price" key={index}>
-                          ₹{item.price}
-                        </p>
+                      <p>Passes purchased:</p>
+                      <p>
+                        {confirmationData.pass_selected.length}
+                      </p>
                       </div>
                     </div>
-                  ))}
+               
                 </ul>
-                {/* Display subtotal and total price */}
-                <div className="subtotal">
-                  <p>Subtotal </p>
-                  <p> ₹{formDataDetails.subtotal.toFixed(2)}</p>
-                </div>
-                <div className="gst">
-                  <p>GST (18%)</p>
-                  <p>₹ {(formDataDetails.subtotal * 0.18).toFixed(2)}</p>
-                </div>
-                <div className="total">
-                  <p>Total Price </p>
-                  <p>₹{formDataDetails.totalPrice.toFixed(2)}</p>
-                </div>
+                {/* Display confirmation data */}
+                {confirmationData && (
+                  <div className="main-payment">
+                    <div className="subtotal"> <p>Subtotal: </p><p>₹{confirmationData.subtotal}</p></div>
+                   <div className="gst"> <p>GST: </p><p>₹{confirmationData.gst}</p></div>
+                   <div className="handling"><p> Handling fee:</p><p>₹{confirmationData.handling_fee}</p></div>
+                   <div className="total"><p>Total: </p><p>₹{confirmationData.total}</p></div>
+                    
+                    
+                  </div>
+                )}
                 <div className="razor-pay">
                   <h3>Pay by razorpay</h3>
                 </div>
@@ -287,13 +341,18 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId,prod
           </div>
         </div>
       </div>
-      {paymentSuccessful? <button className="Next-ph" onClick={handleNextClick}>
+      <div className="main-age-section">
+    {/* Rest of your code */}
+    {activeTab === 'details' ? (
+      <button className="Next-ph2" onClick={handleNextClick}>
+        Next
+      </button>
+    ) : (
+      <button className="Next-ph1"  disabled={paymentInProgress}>
         Pay Now
-      </button>:<button className="Next-ph" onClick={handleNextClick}>
-        Pay Now
-      </button>}
-      
-     
+      </button>
+    )}
+  </div>
     </div>
   );
 }

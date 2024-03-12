@@ -3,6 +3,7 @@
   /* width: 100vw; */
   height: 100vh;
   position: relative;
+  background: linear-gradient(180.17deg, #0c6c9c 0.15%, #000000 99.86%);
 }
 
 .hero-container {
@@ -43,6 +44,7 @@ nav {
 
 .hero-main-container {
   width: 100%;
+  height: 80vh;
   display: flex;
   gap: 2rem;
   justify-content: space-between;
@@ -50,7 +52,7 @@ nav {
 }
 
 .hero-img {
-  z-index: -2;
+  z-index: 0;
   position: absolute;
   width: auto;
   bottom: 0;
@@ -127,6 +129,10 @@ nav {
 }
 
 @media (width<=650px) {
+  .hero-main-container {
+    height: 100%;
+  }
+
   .extra-div {
     display: none;
   }

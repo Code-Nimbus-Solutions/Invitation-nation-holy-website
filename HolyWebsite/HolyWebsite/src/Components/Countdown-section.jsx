@@ -1,29 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Countdown-section.css";
 
 const CountdownSection = () => {
+  const [offerName, setOfferName] = useState("");
+  const [offerValidDate, setOfferValidDate] = useState("");
+  const [offerPercentage, setOfferPercentage] = useState(0);
+  const [timeRemaining, setTimeRemaining] = useState("");
+
+  useEffect(() => {
+    fetch("http://192.168.0.105:8080/rest/api/public")
+      .then((response) => response.json())
+      .then((data) => {
+        setOfferName(data.offer_name);
+        setOfferValidDate(data.offer_valid_date);
+        setOfferPercentage(data.offer_persent);
+        calculateTimeRemaining(data.offer_valid_date); // Initial calculation
+        const intervalId = setInterval(() => calculateTimeRemaining(data.offer_valid_date), 1000); // Update every second
+        return () => clearInterval(intervalId); // Clean up interval
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  const calculateTimeRemaining = (validDate) => {
+    const now = new Date().getTime();
+    const validDateTime = new Date(validDate).getTime();
+    const timeDifference = validDateTime - now;
+
+    if (timeDifference > 0) {
+    
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      setTimeRemaining(` ${hours}h ${minutes}m ${seconds}s`);
+    } else {
+      setTimeRemaining("Offer expired");
+    }
+  };
+
   return (
-    <>
-      <section id="count-down-section">
-        <div className="nimbus-container">
-          <div className="count-down-container">
-            <div className="count-down-timer-box">
-              <h3 className="count-down-timer-title">
-                Early Bird offer ends in
-              </h3>
-              <span className="count-down-timer-value">22:12:33</span>
-            </div>
-            <div className="count-down-price-box">
-              <h3 className="count-down-price-title">Sale : 50% Discount</h3>
-              <p className="count-down-price-value">
-                <s>1799</s> ₹899
-              </p>
-              <span>Onwards</span>
-            </div>
+    <section id="count-down-section">
+      <div className="nimbus-container">
+        <div className="count-down-container">
+          <div className="count-down-timer-box">
+            <h3 className="count-down-timer-title">{offerName}</h3>
+            <span className="count-down-timer-value">{timeRemaining}</span>
+          </div>
+          <div className="count-down-price-box">
+            <h3 className="count-down-price-title">Sale : {offerPercentage}% Discount</h3>
+            {/* Assuming the original price is 1799 */}
+            <p className="count-down-price-value">
+              <s>1799</s> ₹899
+            </p>
+            <span>Onwards</span>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

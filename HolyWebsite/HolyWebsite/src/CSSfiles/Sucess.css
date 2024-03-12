@@ -1,12 +1,73 @@
-.payment-section{
+.payment-section {
     position: absolute;
     background-color: rgb(134, 46, 124);
     text-align: center;
     width: 100%;
     height: 100%;
 }
-.sucess-card-container{
+
+.sucess-card-container {
     background-color: white;
     border-radius: 1rem;
-    
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+
+}
+.sucess-card-container h1{
+    font-size: 30px;
+}
+
+.image-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    margin: 2rem;
+
+}
+
+.sucsess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.info-container {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: aliceblue;
+    margin: 2rem;
+    font-size: 40px;
+    padding: 2rem;
+    border-radius: 10px;
+    font-family: "Secular One", sans-serif;
+}
+.nextstep{
+    font-weight: 600;
+    font-family: "Secular One", sans-serif;
+}
+.payment{
+    font-family: "Secular One", sans-serif;
+    font-size: 30px;
+}
+.Share-content{
+    padding: 1rem;
+    font-size: 30px;
+    font-family: "Secular One", sans-serif;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.177);
+    cursor: pointer;
+    width: 30rem;
+}
+
+@media(width<600px) {
+    .image-cont {
+        width: 50%;
+    }
 }
