@@ -35,6 +35,8 @@
 .product-name h2{
     font-size: 25px;
     background-color: transparent;
+    display: flex;
+    padding-top: 2rem;
 }
 
 .quantity-controls {
@@ -55,16 +57,35 @@ button {
     
 
 }
+.close-drop{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: transparent;
+    padding: 2rem;
+    color: #1989C1;
+    cursor: pointer;
+    font-size: 20px
+;
+}
+.dis{
+    text-decoration: line-through;
+    color: grey;
+    font-size: 20px;
+}
 
 .add-button {
     background-color: #ffffff;
     color: #000000;
+    margin-top: 2rem;
 }
 
 .dropdown-container {
     position: relative;
     width: 100%;
     background-color: #1b1b1b;
+    border-radius: 0px 0px 8px 8px;
    
 
 }
@@ -72,8 +93,11 @@ button {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    font-size: 12px;
+    font-size: 15px;
     color: #1989C1;
+}
+.dropdown-header i{
+    font-size: 20px;
 }
 .dropdown-list{
     font-size: 12px;
@@ -143,6 +167,6 @@ option{
     }
    
     .next{
-        width: 90%;
+        width: 100%;
     }
 }

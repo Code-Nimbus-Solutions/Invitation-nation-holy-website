@@ -44,36 +44,6 @@ export default function CartCard({ productName }) {
     }
   };
 
-  const handleAddToCart = (productName, productIndex) => {
-    // Check if the product exists in offerData
-    if (!offerData || !offerData.pass_price.hasOwnProperty(productName)) {
-      console.error(`Product "${productName}" not found in offerData.`);
-      return;
-    }
-  
-    const productPrice = offerData.pass_price[productName];
-    const productQuantity = quantity[productIndex];
-    
-    // Prevent adding if the counter is not greater than 0
-    if (productQuantity <= 0) {
-      alert('Quantity must be greater than 0');
-      return;
-    }
-  
-    // Prepare the purchased item with the product name and quantity
-    const purchasedItem = { productName, quantity: productQuantity, price: productPrice };
-  
-    // Add the purchased item to the purchasedData array
-    setPurchasedData(prevData => [...prevData, purchasedItem]);
-  
-    // Reset quantity to 0 after adding to cart
-    const newQuantity = [...quantity];
-    newQuantity[productIndex] = 0;
-    setQuantity(newQuantity);
-  
-    console.log(`Added ${productQuantity} ${productName} to cart`);
-  };
-  
   const handleOptionChange = (option) => {
     setSelectedOption(option);
   };
@@ -87,39 +57,51 @@ export default function CartCard({ productName }) {
   };
 
   const handleNextClick = () => {
-    // Check if any packages are added
-    if (purchasedData.length === 0) {
-      alert('Please add at least one package to proceed');
+    // Calculate total quantity selected
+    if (!offerData) {
+      console.error('Offer data is not available yet.');
       return;
     }
-    
-    // Prepare the packages array
-    const packages = [];
-    const Beverage =[];
-    const Tshirt =[];
+    const totalQuantity = quantity.reduce((acc, curr) => acc + curr, 0);
   
-    // Iterate over purchased data to create packages
-    purchasedData.forEach(item => {
-      const { productName, quantity } = item;
-      for (let i = 0; i < quantity; i++) {
-        packages.push(productName);
-        Beverage.push("yes") 
-        Tshirt.push("yes")// Pushing only the product name
-      }
-    });
+    // Check if any packages are added
+    if (totalQuantity > 0) {
+      // Prepare the packages array
+      const packages = [];
+      const Beverage = [];
+      const Tshirt = [];
   
-    // Log the packages
-    console.log('Packages:', packages);
-    console.log('Beverage:', Beverage);
-    console.log('Tshirt:', Tshirt);
+      // Iterate over purchased data to create packages
+      quantity.forEach((qty, index) => {
+        const productName = Object.keys(offerData.pass_price)[index];
+       
   
-    // Set the current state to 'input'
-    setCurrentState('input');
+        for (let i = 0; i < qty; i++) {
+          packages.push(productName);
+          Beverage.push("yes");
+          Tshirt.push("yes"); // Pushing only the product name
+        }
+      });
   
-    // Set packages data state
-    setPackagesData(packages);
-    setBeverageData(Beverage);
-    setTshirtData(Tshirt)
+      // Log the packages
+      console.log('Packages:', packages);
+      console.log('Beverage:', Beverage);
+      console.log('Tshirt:', Tshirt);
+  
+      // Set the current state to 'input'
+      setCurrentState('input');
+  
+      // Set packages data state
+      setPackagesData(packages);
+      setBeverageData(Beverage);
+      setTshirtData(Tshirt);
+  
+      // Set purchasedData with the total quantity
+      const purchasedItem = { productName, quantity: totalQuantity };
+      setPurchasedData([purchasedItem]);
+    } else {
+      alert('Please add at least one package to proceed');
+    }
   };
   
   const Globalvalue = (type) => {
@@ -143,7 +125,7 @@ export default function CartCard({ productName }) {
               <><div className="cart-card" key={i}>
                 <div className="product-name">
                   <h1 value={(type)}>{Globalvalue(type)}</h1>
-                  <h2>₹{offerData.pass_price[type]}</h2> {/* Display the offer price */}
+                  <h2><p className="dis">₹1899</p>₹{offerData.pass_price[type]}</h2> {/* Display the offer price */}
                 </div>
                 <div className="order-basket">
                   <div className="quantity-controls">
@@ -151,7 +133,7 @@ export default function CartCard({ productName }) {
                     <span className="quantity">{quantity[i] || 0}</span>
                     <button onClick={() => handleIncrement(i)}>+</button>
                   </div>
-                  <button className="add-button" onClick={() => handleAddToCart(type, i)}>Add</button>
+                  <button className="add-button" onClick={() => handleIncrement(i)}>Add</button>
                 </div>
               </div><div className="dropdown-container">
                   <div className="dropdown-header" onClick={() => handleToggleDropdown(i)}>
@@ -166,6 +148,8 @@ export default function CartCard({ productName }) {
                       <div><i className="fa-solid fa-check"></i>   Access to Paid Fun Activities</div>
                       <div className='Priced'><i className="fa-solid fa-check"></i>  Free Drink</div>
                       <div className='Priced'><i className="fa-solid fa-check"></i>  Free T-shirt ( White )</div>
+
+                      <button className="close-drop" onClick={()=>handleToggleDropdown(i)}>Close</button>
                     </div>
                   )}
                 </div></>
