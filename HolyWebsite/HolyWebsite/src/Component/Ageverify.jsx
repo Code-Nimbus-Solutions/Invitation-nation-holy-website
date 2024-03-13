@@ -148,6 +148,10 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
     // Here you can also send the coupon data to the server if needed
   };
   const handleNextClick = () => {
+    if (!formDataDetails.Phonenumber || formDataDetails.Phonenumber.length !== 10) {
+      alert('Please enter a valid 2-digit phone number.');
+      return; // Prevent further execution
+    }
     if (paymentInProgress) {
       return; // Do nothing if payment is already in progress
     }
@@ -257,8 +261,8 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
     })
     .then(data => {
       // Handle response data
-      console.log('Payment response:', data);
-      console.log('Payment successful:', data);
+      // console.log('Payment response:', data);
+      // console.log('Payment successful:', data);
       // Check if the response indicates success
       if (data && data.success) {
         // Navigate to success page

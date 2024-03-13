@@ -18,7 +18,7 @@ export default function CartCard({ productName }) {
     fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public`)
       .then(response => response.json())
       .then(data => {
-        console.log('Fetched offer data:', data); // Log fetched data for debugging
+        // console.log('Fetched offer data:', data); // Log fetched data for debugging
         setOfferData(data);
       })
       .catch(error => console.error('Error fetching offer data:', error));
@@ -32,7 +32,7 @@ export default function CartCard({ productName }) {
     setQuantity(prevState => {
       const newQuantity = [...prevState];
       newQuantity[index] = (newQuantity[index] || 0) + 1;
-      console.log('New Quantity:', newQuantity); // Log the new quantity
+      // console.log('New Quantity:', newQuantity); // Log the new quantity
       return newQuantity;
     });
   };
