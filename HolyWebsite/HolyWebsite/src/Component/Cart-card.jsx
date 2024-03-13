@@ -113,10 +113,10 @@ export default function CartCard({ productName }) {
       return "Premium Pass"
     }
     if(type == "pass_type_2" ) {
-      return "Gold Pass"
+      return " Elite Pass "
     }
     if(type == "pass_type_3" ) {
-      return "Silver Pass"
+      return "Standard Pass"
     }
   }
 
