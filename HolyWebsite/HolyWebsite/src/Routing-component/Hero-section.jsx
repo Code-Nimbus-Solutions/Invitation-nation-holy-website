@@ -1,29 +1,28 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HeroImg from "../assets/hero-section/hero-img.svg";
 import HeroLogo from "../assets/hero-section/UCB.svg";
-import CountdownSection from "../Components/Countdown-section";
-import HighlightsSection from "../Components/Highlights-Section";
-import ScheduleSection from "../Components/Schedule-section";
-import ControlledAccordions from "../Components/Accordion";
 import "./Hero-section.css";
 import Footer from "../Components/Footer";
+import axios from 'axios';
 
 export default function HeroSection() {
-  const items = [
-    {
-      title: "Section 1",
-      content: "Content for section 1",
-    },
-    {
-      title: "Section 2",
-      content: "Content for section 2",
-    },
-    {
-      title: "Section 3",
-      content: "Content for section 3",
-    },
-  ];
+  useEffect(() => {
+    const fetchAPI = async () => {
+      try {
+        const response = await axios.get('https://cors-anywhere.herokuapp.com/http://holi.invitationnation.in/rest/api/public/ctlanding');
+        if (response.data.responceId === "OS" && response.data.responce === "Operation Successfully") {
+          console.log("Success");
+        } else {
+          console.log("Unexpected response:", response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchAPI();
+  }, []);
 
   return (
     <>
@@ -35,10 +34,12 @@ export default function HeroSection() {
                 <img src={HeroLogo} alt="" />
               </div>
               <ul className="main-nav">
-                <a href="#schedule-section" style={{textDecoration:"none"}}><li className="nav-link">Schedule</li></a>
-          
-                <a href="#highlights-section" style={{textDecoration:"none"}}> <li className="nav-link">Party highlights</li></a>
-               
+                <a href="#schedule-section" style={{ textDecoration: "none" }}>
+                  <li className="nav-link">Schedule</li>
+                </a>
+                <a href="#highlights-section" style={{ textDecoration: "none" }}>
+                  <li className="nav-link">Party highlights</li>
+                </a>
               </ul>
             </nav>
             <div className="hero-main-container">
@@ -68,11 +69,7 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-      <CountdownSection></CountdownSection>
-      <HighlightsSection></HighlightsSection>
-      <ScheduleSection></ScheduleSection>
-      <ControlledAccordions />
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }

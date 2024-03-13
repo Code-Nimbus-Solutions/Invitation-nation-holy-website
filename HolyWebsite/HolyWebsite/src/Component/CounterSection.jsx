@@ -12,7 +12,7 @@ export default function CounterSection() {
         progress: 0
       };
     }
-  
+
     const eventDate = new Date(offerData.offer_valid_date).getTime();
     const now = new Date().getTime();
     const difference = eventDate - now;
@@ -26,9 +26,9 @@ export default function CounterSection() {
     );
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
+      hours: Math.max(Math.floor((difference / (1000 * 60 * 60)) % 24), 0),
+      minutes: Math.max(Math.floor((difference / 1000 / 60) % 60), 0),
+      seconds: Math.max(Math.floor((difference / 1000) % 60), 0),
       progress: progress
     };
   };
@@ -61,7 +61,15 @@ export default function CounterSection() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      setTimeLeft(prevTimeLeft => {
+        const newTimeLeft = calculateTimeLeft();
+        if (newTimeLeft.days === 0 && newTimeLeft.hours === 0 && newTimeLeft.minutes === 0 && newTimeLeft.seconds === 0) {
+          clearInterval(timer);
+          return { ...prevTimeLeft, ...newTimeLeft };
+        } else {
+          return newTimeLeft;
+        }
+      });
     }, 1000);
 
     // Cleanup function to clear the interval
