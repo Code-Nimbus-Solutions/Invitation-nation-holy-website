@@ -2,7 +2,7 @@
     padding: 9.6rem 0;
     background-color: #1989c1;
     position: relative;
-    z-index: -3;
+    z-index: 0;
     overflow: hidden;
   }
   
@@ -17,16 +17,18 @@
   
   .schedule-decoration-left {
     position: absolute;
+    top: 0;
     left: 0;
     height: 100%;
-    z-index: -2;
+    z-index: 1;
   }
   
   .schedule-decoration-right {
     position: absolute;
+    top: 0;
     right: 0;
     height: 100%;
-    z-index: -2;
+    z-index: 1;
   }
   
   .schedule-decoration-left img,
@@ -42,6 +44,7 @@
     font-weight: 400;
     text-align: center;
     color: #000;
+    z-index: 3;
   }
   
   .schedule-info-box {
@@ -50,6 +53,7 @@
     justify-content: center;
     gap: 2rem;
     width: 80%;
+    z-index: 3;
   }
   
   .schedule-element {
@@ -94,11 +98,9 @@
     letter-spacing: 1px;
     padding: 1rem 4.8rem;
     cursor: pointer;
-    z-index: 999;
+    z-index: 3;
   }
-  #root{
-    z-index: -999;
-  }
+
   
   @media (width<=650px) {
     .schedule-info-box {

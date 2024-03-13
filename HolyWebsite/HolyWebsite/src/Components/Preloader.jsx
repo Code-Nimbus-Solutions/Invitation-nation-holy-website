@@ -27,11 +27,16 @@ const Preloader = () => {
     };
 
     // Hide preloader and add animation classes with delay
-    setTimeout(hidePreloader, 1000); // Hide preloader after 1 second
-    setTimeout(addAnimationClasses, 1000); // Add animation classes after 2 seconds
+    setTimeout(hidePreloader, 0); // Hide preloader after 3 seconds
+    addAnimationClasses(); // Add animation classes immediately
   };
 
   window.addEventListener("load", handleLoad);
+  setTimeout(() => {
+    if (document.readyState !== "loading") {
+      handleLoad();
+    }
+  }, 3000);
 
   return (
     <div>
