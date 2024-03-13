@@ -36,7 +36,7 @@ const Preloader = () => {
     if (document.readyState !== "loading") {
       handleLoad();
     }
-  }, 3000);
+  }, 5000);
 
   return (
     <div>
