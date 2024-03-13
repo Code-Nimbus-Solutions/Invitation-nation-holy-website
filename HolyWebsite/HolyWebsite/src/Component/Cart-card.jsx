@@ -88,9 +88,9 @@ export default function CartCard({ productName }) {
       });
   
       // Log the packages
-      console.log('Packages:', packages);
-      console.log('Beverage:', Beverage);
-      console.log('Tshirt:', Tshirt);
+      // console.log('Packages:', packages);
+      // console.log('Beverage:', Beverage);
+      // console.log('Tshirt:', Tshirt);
   
       // Set the current state to 'input'
       setCurrentState('input');
@@ -128,10 +128,10 @@ export default function CartCard({ productName }) {
 {Object.keys(offerData.pass_price).map((type, i) => {
   const originalPrice = offerData.pass_price[type];
   const discountPercentage = offerData.offer_persent; // Corrected field name
-  console.log('Original Price:', originalPrice);
-  console.log('Discount Percentage:', discountPercentage);
+  // console.log('Original Price:', originalPrice);
+  // console.log('Discount Percentage:', discountPercentage);
   const discountedPrice = Math.floor(originalPrice - (originalPrice * (discountPercentage / 100)));
-  console.log('Discounted Price:', discountedPrice);
+  // console.log('Discounted Price:', discountedPrice);
   return (
     <div className="cart-card" key={i}>
       <div className="product-name">
