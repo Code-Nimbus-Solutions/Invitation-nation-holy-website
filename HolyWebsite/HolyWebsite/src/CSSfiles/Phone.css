@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 1.25rem;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     color: black;
     box-shadow: rgba(0, 0, 0, 0.752) 5px 5px 5px 5px;
     margin-top: 2rem;
@@ -130,20 +130,23 @@
     box-shadow: #000000 5px 5px 5px 5px;
     border: 1px solid black;
     cursor: pointer;
+
+  
   
 }
 .Next-ph {
-    background-color: red;
+    background-color: #FF5338;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
+
   }
   
   /* Style for when input fields are filled */
   .Next-ph.filled {
-    background-color: green;
+    background-color: #01B049;
   }
   
   /* Disabled style */
@@ -154,6 +157,6 @@
 
 @media(width<600px){
     .Next-ph{
-        width: 100%;
+        width: 90%;
     }
 }

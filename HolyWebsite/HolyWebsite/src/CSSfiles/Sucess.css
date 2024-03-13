@@ -1,6 +1,6 @@
 .payment-section {
     position: absolute;
-    background-color: rgb(134, 46, 124);
+    background-color:#1989C1;
     text-align: center;
     width: 100%;
     height: 100%;
@@ -15,10 +15,13 @@
     justify-content: center;
     align-items: center;
     margin: 2rem;
+    box-shadow: black 5px 5px 5px 5px ;
 
 }
 .sucess-card-container h1{
-    font-size: 30px;
+    font-size: 16px;
+    padding: 2rem;
+    font-weight: 400;
 }
 
 .image-cont {
@@ -30,6 +33,10 @@
     width: 20%;
     margin: 2rem;
 
+}
+.image-cont h1{
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .sucsess {
@@ -46,26 +53,68 @@
     margin: 2rem;
     font-size: 40px;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 30px;
     font-family: "Secular One", sans-serif;
 }
 .nextstep{
     font-weight: 600;
-    font-family: "Secular One", sans-serif;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
 }
 .payment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Secular One", sans-serif;
+    font-size: 16px;
+
+    color: #1989C1;
+    cursor: pointer;
+}
+.payment img{
+    padding: 1rem;
+}
+.follow-section{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 2rem;
+
+}
+.link{
+    background-color: black;
+    border-radius: 20px;
+    padding: 3rem;
+}
+.timer-sucess{
+    font-weight: 600;
     font-size: 30px;
+    padding: 2rem;
 }
 .Share-content{
-    padding: 1rem;
-    font-size: 30px;
-    font-family: "Secular One", sans-serif;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.177);
+    width: 40rem;
+    font-size: 40px;
+    height: 92px;
+    padding: 0.5rem;
+    font-weight: 600;
+    border-radius: 15px;
+    color: #000000;
+    background-color: #FF5338;
+    box-shadow: #000000 5px 5px 0px 5px;
+    border: none;
     cursor: pointer;
-    width: 30rem;
+    font-family: "Montserrat", sans-serif;
 }
-
+.img-logo-container{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+.sponsor{
+    color: white;
+    font-family: "Secular One", sans-serif;
+    font-size: 12px;
+    padding: 2rem;
+}
 @media(width<600px) {
     .image-cont {
         width: 50%;

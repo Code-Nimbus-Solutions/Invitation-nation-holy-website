@@ -127,7 +127,7 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
           <>
             <div className="main-phone-card">
               <div className="ph-card-content">
-                <h2 className="phone">Verify your Phone number</h2>
+                <h2 className="phone">Verify your email</h2>
                 <p>A copy of the tickets will be sent to the below email</p>
               </div>
               <div className="details-fld">
@@ -145,7 +145,7 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
               </div>
               </div>
              
-              <p className='otp-description'>OTP has been sent to your Phone Number</p>
+              <p className='otp-description'>OTP has been sent to your Email</p>
               <p className='otp-timer'>Resend OTP in {timer}secs</p>
             </div>
            

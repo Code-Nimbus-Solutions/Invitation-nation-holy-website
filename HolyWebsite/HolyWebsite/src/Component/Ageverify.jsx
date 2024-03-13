@@ -3,6 +3,7 @@ import '../CSSfiles/AgeVerify.css'; // Import the CSS file for styling
 import { Link } from 'react-router-dom';
 
 export default function AgeVerify({ purchasedData, setPurchasedData, mailId, productName, packagesData ,BeverageData, TshirtData}) {
+
   const [activeTab, setActiveTab] = useState('details');
   const [formDataDetails, setFormDataDetails] = useState({
     Phonenumber: '',
@@ -18,6 +19,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
   const [limit, setLimit] = useState(0); // State to store the limit for both veg and non-veg lunches
   const [confirmationData, setConfirmationData] = useState(null); // State to store confirmation data
   const [paymentInProgress, setPaymentInProgress] = useState(false); 
+
 
   useEffect(() => {
     // Calculate subtotal and total price whenever purchasedData changes
@@ -233,6 +235,47 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
         setPaymentInProgress(false); // Reset payment progress state
       });
   };
+  const handlePayNowClick = (mailId) => {
+    // Prepare the payload
+    const payload = {
+      email: mailId
+    };
+  
+    // Make the POST request
+    fetch('http://192.168.0.105:8080/rest/api/public/process-confirm', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle response data
+      console.log('Payment response:', data);
+      console.log('Payment successful:', data);
+      // Check if the response indicates success
+      if (data && data.success) {
+        // Navigate to success page
+        history.push('/success');
+      } else {
+        // Handle failure scenario
+        console.error('Payment failed:', data.error);
+        
+        // Optionally display an error message to the user
+      }
+    })
+    .catch(error => {
+      console.error('Error making payment:', error);
+      // Handle error
+    });
+  };
+  
 
   return (
     <div className="main-age-section">
@@ -351,7 +394,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
         Next
       </button>
     ) : (
-      <Link to='/sucsess'> <button className="Next-ph1"  disabled={paymentInProgress}>
+      <Link to='/sucsess'> <button className="Next-ph1" onClick={() => handlePayNowClick(mailId)} disabled={paymentInProgress}  >
         Pay Now
       </button></Link>
      

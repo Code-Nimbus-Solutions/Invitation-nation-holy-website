@@ -19,41 +19,41 @@ const ScheduleSection = () => {
             <h2 className="schedule-title">Party plan</h2>
             <div className="schedule-info-box">
               <div className="schedule-element">
-                <span className="schedule-time">10:30 am</span>
+                <span className="schedule-time">11:00 am</span>
                 <div className="schedule-line"></div>
                 <span className="schedule-element-title">Gates Open</span>
               </div>
               <div className="schedule-element">
-                <span className="schedule-time">10:30 am</span>
+                <span className="schedule-time">11:30 am</span>
                 <div className="schedule-line"></div>
                 <span className="schedule-element-title">
                   Food stalls + Fun activities opens{" "}
                 </span>
               </div>
               <div className="schedule-element">
-                <span className="schedule-time">10:30 am</span>
+                <span className="schedule-time">11:30 am</span>
                 <div className="schedule-line"></div>
                 <span className="schedule-element-title">DJ PARTY Starts</span>
               </div>
               <div className="schedule-element">
-                <span className="schedule-time">10:30 am</span>
+                <span className="schedule-time">11:30 am</span>
                 <div className="schedule-line"></div>
                 <span className="schedule-element-title">
                   Complimentary Drink + Bar opens
                 </span>
               </div>
               <div className="schedule-element">
-                <span className="schedule-time">10:30 am</span>
+                <span className="schedule-time">12:30 pm</span>
                 <div className="schedule-line"></div>
                 <span className="schedule-element-title">
                   Complimentary Lunch ( Veg & Non-veg )
                 </span>
               </div>
               <div className="schedule-element">
-                <span className="schedule-time">10:30 am</span>
+                <span className="schedule-time">04:00 pm</span>
                 <div className="schedule-line"></div>
                 <span className="schedule-element-title">
-                  Hardcore Dj Mixes
+                  Surprise Activity
                 </span>
               </div>
             </div>
