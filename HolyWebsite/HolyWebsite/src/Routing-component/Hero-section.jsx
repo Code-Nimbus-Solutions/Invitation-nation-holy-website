@@ -35,8 +35,10 @@ export default function HeroSection() {
                 <img src={HeroLogo} alt="" />
               </div>
               <ul className="main-nav">
-                <li className="nav-link">Schedule</li>
-                <li className="nav-link">Party highlights</li>
+                <a href="#schedule-section" style={{textDecoration:"none"}}><li className="nav-link">Schedule</li></a>
+          
+                <a href="#highlights-section" style={{textDecoration:"none"}}> <li className="nav-link">Party highlights</li></a>
+               
               </ul>
             </nav>
             <div className="hero-main-container">
@@ -52,7 +54,11 @@ export default function HeroSection() {
                 </p>
                 <div className="hero-date-box">
                   <span className="hero-date-day">Sunday </span>
-                  <span className="hero-date-date">24th March, 2024</span>
+                  <div className="date-time">
+                     <span className="hero-date-date">24th March, 2024</span>
+                  <span className="hero-time">11:30 AM TO 4:30 PM</span>
+                    </div>
+                 
                 </div>
                 <Link to="/payment" style={{ textDecoration: "none" }}>
                   <button className="hero-btn">Book Tickets Now</button>

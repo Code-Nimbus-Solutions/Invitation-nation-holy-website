@@ -40,6 +40,7 @@ nav {
   font-family: Poppins;
   font-size: 2rem;
   font-weight: 400;
+  color: white;
 }
 
 .hero-main-container {
@@ -99,6 +100,7 @@ nav {
   display: flex;
   text-align: left;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
   padding: 2rem 0;
 }
@@ -110,6 +112,14 @@ nav {
   font-weight: 400;
   text-align: left;
   color: #87d7ff;
+}
+.date-time{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .hero-date-day {

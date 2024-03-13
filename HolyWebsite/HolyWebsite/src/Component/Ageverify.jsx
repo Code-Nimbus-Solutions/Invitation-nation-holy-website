@@ -276,7 +276,18 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
     });
   };
   
-
+  
+  const Globalvalue = (pass) => {
+    if(pass === "pass_type_1" ) {
+      return "Premium Pass"
+    }
+    if(pass === "pass_type_2" ) {
+      return "Gold Pass"
+    }
+    if(pass === "pass_type_3" ) {
+      return "Silver Pass"
+    }
+  }
   return (
     <div className="main-age-section">
       <div className="main-age-container">
@@ -343,9 +354,9 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
   <div>
     {/* Render purchased data */}
     <ul>
-      {confirmationData.pass_selected.map((pass, index) => (
+    {confirmationData.pass_selected.map((pass, index) => (
         <li key={index}>
-          {pass}
+          {Globalvalue(pass)} {/* Render pass type using the Globalvalue function */}
         </li>
       ))}
     </ul>
@@ -356,11 +367,11 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
         <p>₹{confirmationData.subtotal}</p>
       </div>
       <div className="gst">
-        <p>GST: </p>
+        <p>Handling fee: </p>
         <p>₹{confirmationData.gst}</p>
       </div>
       <div className="handling">
-        <p>Handling fee:</p>
+        <p>Transaction fee:</p>
         <p>₹{confirmationData.handling_fee}</p>
       </div>
       <div className="total">

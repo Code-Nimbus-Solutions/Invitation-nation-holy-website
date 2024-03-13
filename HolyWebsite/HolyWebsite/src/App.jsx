@@ -7,12 +7,14 @@ import PaymentFail from './Component/payment-fail';
 import Dashboard from "./Routing-component/Dashboard";
 import Login from "./Routing-component/Login";
 import { useState } from "react";
+import Preloader from "./Components/Preloader";
 
 
 function App() {
   const [mailId, setMailId] = useState('');
   return (
     <>
+    <Preloader/>
       <Router>
         <Routes>
 

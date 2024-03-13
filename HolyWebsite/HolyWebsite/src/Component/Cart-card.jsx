@@ -3,7 +3,7 @@ import '../CSSfiles/Cart.css';
 import PhoneNumber from './Phone-number';
 
 export default function CartCard({ productName }) {
-  const [quantity, setQuantity] = useState([]);
+  const [quantity, setQuantity] = useState([0,0,0]);
   const [selectedOption, setSelectedOption] = useState(`See what's included`);
   const [purchasedData, setPurchasedData] = useState([]);
   const [currentState, setCurrentState] = useState('display'); // 'display' or 'input'
@@ -17,10 +17,12 @@ export default function CartCard({ productName }) {
     // Fetch offer data from the API
     fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public`)
       .then(response => response.json())
-      .then(data => setOfferData(data))
+      .then(data => {
+        console.log('Fetched offer data:', data); // Log fetched data for debugging
+        setOfferData(data);
+      })
       .catch(error => console.error('Error fetching offer data:', error));
   }, []);
-
   useEffect(() => {
     // Save purchasedData to localStorage whenever it changes
     localStorage.setItem('purchasedData', JSON.stringify(purchasedData));
@@ -30,6 +32,7 @@ export default function CartCard({ productName }) {
     setQuantity(prevState => {
       const newQuantity = [...prevState];
       newQuantity[index] = (newQuantity[index] || 0) + 1;
+      console.log('New Quantity:', newQuantity); // Log the new quantity
       return newQuantity;
     });
   };
@@ -43,6 +46,7 @@ export default function CartCard({ productName }) {
       });
     }
   };
+  
 
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -119,46 +123,41 @@ export default function CartCard({ productName }) {
   return (
     <div className="main-cart-card">
       <div className="card-container">
-        {currentState === 'display' && offerData ? (
-          <>
-            {Object.keys(offerData.pass_price).map((type, i) => (
-              <><div className="cart-card" key={i}>
-                <div className="product-name">
-                  <h1 value={(type)}>{Globalvalue(type)}</h1>
-                  <h2><p className="dis">₹1899</p>₹{offerData.pass_price[type]}</h2> {/* Display the offer price */}
-                </div>
-                <div className="order-basket">
-                  <div className="quantity-controls">
-                    <button onClick={() => handleDecrement(i)}>-</button>
-                    <span className="quantity">{quantity[i] || 0}</span>
-                    <button onClick={() => handleIncrement(i)}>+</button>
-                  </div>
-                  <button className="add-button" onClick={() => handleIncrement(i)}>Add</button>
-                </div>
-              </div><div className="dropdown-container">
-                  <div className="dropdown-header" onClick={() => handleToggleDropdown(i)}>
-                    <span>{selectedOption}</span>
-                    <i className={`fas fa-chevron-${openDropdowns[i] ? 'up' : 'down'}`}></i>
-                  </div>
-                  {openDropdowns[i] && (
-                    <div className="dropdown-list">
-                      <div><i className="fa-solid fa-check"></i>   Free lunch ( Veg & Non veg )</div>
-                      <div><i className="fa-solid fa-check"></i>   Free Organic Colors</div>
-                      <div><i className="fa-solid fa-check"></i>   Free Access to Rain dance</div>
-                      <div><i className="fa-solid fa-check"></i>   Access to Paid Fun Activities</div>
-                      <div className='Priced'><i className="fa-solid fa-check"></i>  Free Drink</div>
-                      <div className='Priced'><i className="fa-solid fa-check"></i>  Free T-shirt ( White )</div>
+      {currentState === 'display' && offerData ? (
+  <>
+{Object.keys(offerData.pass_price).map((type, i) => {
+  const originalPrice = offerData.pass_price[type];
+  const discountPercentage = offerData.offer_persent; // Corrected field name
+  console.log('Original Price:', originalPrice);
+  console.log('Discount Percentage:', discountPercentage);
+  const discountedPrice = Math.floor(originalPrice - (originalPrice * (discountPercentage / 100)));
+  console.log('Discounted Price:', discountedPrice);
+  return (
+    <div className="cart-card" key={i}>
+      <div className="product-name">
+        <h1 value={(type)}>{Globalvalue(type)}</h1>
+        <h2>
+          <p className="dis">₹{Math.floor(originalPrice)}</p>
+          <p>₹{discountedPrice}</p>
+        </h2>
+      </div>
+      <div className="order-basket">
+        <div className="quantity-controls">
+          <button onClick={() => handleDecrement(i)}>-</button>
+          <span className="quantity">{quantity[i] || 0}</span>
+          <button onClick={() => handleIncrement(i)}>+</button>
+        </div>
+        <button className="add-button" onClick={() => handleIncrement(i)}>Add</button>
+      </div>
+    </div>
+  );
+})}
 
-                      <button className="close-drop" onClick={()=>handleToggleDropdown(i)}>Close</button>
-                    </div>
-                  )}
-                </div></>
-            ))}
-            <button className="next" onClick={handleNextClick}>Next</button>
-          </>
-        ) : (
-          <PhoneNumber purchasedData={purchasedData} productName={productName}  packagesData={packagesData} BeverageData={BeverageData} TshirtData={TshirtData} />
-        )}
+    <button className="next" onClick={handleNextClick}>Next</button>
+  </>
+) : (
+  <PhoneNumber purchasedData={purchasedData} productName={productName}  packagesData={packagesData} BeverageData={BeverageData} TshirtData={TshirtData} />
+)}
       </div>
     </div>
   );
