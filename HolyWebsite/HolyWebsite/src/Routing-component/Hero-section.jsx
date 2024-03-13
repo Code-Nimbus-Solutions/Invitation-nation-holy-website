@@ -1,18 +1,23 @@
+
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import HeroImg from "../assets/hero-section/hero-img.svg";
 import HeroLogo from "../assets/hero-section/UCB.svg";
+import CountdownSection from "../Components/Countdown-section";
+import HighlightsSection from "../Components/Highlights-Section";
+import ScheduleSection from "../Components/Schedule-section";
+import ControlledAccordions from "../Components/Accordion";
 import "./Hero-section.css";
 import Footer from "../Components/Footer";
-import axios from 'axios';
+import axios from "axios";
 
 export default function HeroSection() {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const response = await axios.get('https://cors-anywhere.herokuapp.com/http://holi.invitationnation.in/rest/api/public/ctlanding');
+        const response = await axios.get('http://192.168.0.105:8080/rest/api/public/ctlanding');
         if (response.data.responceId === "OS" && response.data.responce === "Operation Successfully") {
-          console.log("Success");
+          console.log("Success Landing");
         } else {
           console.log("Unexpected response:", response.data);
         }
@@ -69,7 +74,11 @@ export default function HeroSection() {
           </div>
         </div>
       </section>
-      <Footer />
+      <CountdownSection></CountdownSection>
+      <HighlightsSection></HighlightsSection>
+      <ScheduleSection></ScheduleSection>
+      <ControlledAccordions />
+      <Footer></Footer>
     </>
   );
 }
