@@ -149,7 +149,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
   };
   const handleNextClick = () => {
     if (!formDataDetails.Phonenumber || formDataDetails.Phonenumber.length !== 10) {
-      alert('Please enter a valid 2-digit phone number.');
+      alert('Please enter a valid 10-digit phone number.');
       return; // Prevent further execution
     }
     if (paymentInProgress) {
@@ -160,12 +160,12 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
       alert('Please wait while we fetch confirmation data.');
       return;
     }
-  setActiveTab('payment')
+    setActiveTab('payment');
     setPaymentInProgress(true); // Set payment in progress
   
     if (formDataDetails.vegCount + formDataDetails.nonVegCount !== totalQuantity) {
       alert('Please select the correct number of packages for both Veg and Non-Veg.');
-      setActiveTab('details')
+      setActiveTab('details');
       setPaymentInProgress(false); // Reset payment progress state
       return;
     }
@@ -233,51 +233,51 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
       .catch(error => {
         // Handle other errors from the second API request
         console.error('Error:', error);
-       
       })
       .finally(() => {
         setPaymentInProgress(false); // Reset payment progress state
       });
   };
-  const handlePayNowClick = (mailId) => {
+  
+  const handlePayNowClick = () => {
     // Prepare the payload
     const payload = {
       email: mailId
     };
   
     // Make the POST request
-    fetch('http://192.168.0.105:8080/rest/api/public/process-confirm', {
+    fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/process-confirm`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // Handle response data
-      // console.log('Payment response:', data);
-      // console.log('Payment successful:', data);
-      // Check if the response indicates success
-      if (data && data.success) {
-        // Navigate to success page
-        history.push('/success');
-      } else {
-        // Handle failure scenario
-        console.error('Payment failed:', data.error);
-        
-        // Optionally display an error message to the user
-      }
-    })
-    .catch(error => {
-      console.error('Error making payment:', error);
-      // Handle error
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Handle response data
+        // console.log('Payment response:', data);
+        // console.log('Payment successful:', data);
+        // Check if the response indicates success
+        if (data && data.success) {
+          // Navigate to success page
+          history.push('/success');
+        } else {
+          // Handle failure scenario
+          // console.error('Payment failed:', data.error);
+  
+          // Optionally display an error message to the user
+        }
+      })
+      .catch(error => {
+        console.error('Error making payment:', error);
+        // Handle error
+      });
   };
   
   

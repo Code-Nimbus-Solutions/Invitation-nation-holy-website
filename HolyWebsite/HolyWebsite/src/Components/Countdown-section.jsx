@@ -8,7 +8,7 @@ const CountdownSection = () => {
   const [timeRemaining, setTimeRemaining] = useState("");
 
   useEffect(() => {
-    fetch("http://192.168.0.105:8080/rest/api/public")
+    fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public`)
       .then((response) => response.json())
       .then((data) => {
         setOfferName(data.offer_name);
@@ -27,18 +27,19 @@ const CountdownSection = () => {
     const now = new Date().getTime();
     const validDateTime = new Date(validDate).getTime();
     const timeDifference = validDateTime - now;
-
+  
     if (timeDifference > 0) {
-    
       const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
+  
       setTimeRemaining(` ${hours}h ${minutes}m ${seconds}s`);
     } else {
-      setTimeRemaining("Offer expired");
+      // If time difference is negative (offer expired), set time remaining to zero
+      setTimeRemaining("00h 00m 00s");
     }
   };
+  
 
   return (
     <section id="count-down-section">

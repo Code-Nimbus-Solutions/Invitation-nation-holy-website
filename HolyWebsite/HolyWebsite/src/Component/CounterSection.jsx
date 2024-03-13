@@ -15,7 +15,10 @@ export default function CounterSection() {
 
     const eventDate = new Date(offerData.offer_valid_date).getTime();
     const now = new Date().getTime();
-    const difference = eventDate - now;
+    let difference = eventDate - now;
+    if (difference < 0) {
+      difference = 0; // Set difference to zero if offer has expired
+    }
     const totalSeconds = Math.floor(difference / 1000);
     const totalSecondsInADay = 24 * 60 * 60;
     const progress = Math.min(
