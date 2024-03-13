@@ -9,13 +9,13 @@ const ScheduleSection = () => {
     <>
       <section id="schedule-section">
         <div className="nimbus-container">
-          <div className="schedule-container">
             <div className="schedule-decoration-left">
               <img src={DecorationLeft} alt="" />
             </div>
             <div className="schedule-decoration-right">
               <img src={DecorationRight} alt="" />
             </div>
+          <div className="schedule-container">
             <h2 className="schedule-title">Party plan</h2>
             <div className="schedule-info-box">
               <div className="schedule-element">
@@ -57,7 +57,7 @@ const ScheduleSection = () => {
                 </span>
               </div>
             </div>
-            <Link to="/payment" style={{ textDecoration: "none" ,zIndex:9999}}>
+            <Link to="/payment" style={{ textDecoration: "none", zIndex:3}}>
               <button className="schedule-btn">Book Tickets Now</button>
             </Link>
           </div>

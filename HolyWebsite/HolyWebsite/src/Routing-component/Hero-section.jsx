@@ -62,10 +62,10 @@ export default function HeroSection() {
                   <span className="hero-date-day">Sunday </span>
                   <div className="date-time">
                      <span className="hero-date-date">24th March, 2024</span>
-                  <span className="hero-time">11:30 AM TO 4:30 PM</span>
-                    </div>
+               
+                    </div>  
                  
-                </div>
+                </div> <span className="hero-time">11:30 AM TO 4:30 PM</span>
                 <Link to="/payment" style={{ textDecoration: "none" }}>
                   <button className="hero-btn">Book Tickets Now</button>
                 </Link>
