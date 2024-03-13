@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../CSSfiles/Sucess.css';
 import Star from '/src/assets/Component 2.svg';
+import Whatsapp from '/src/assets/WhatsApp.svg'
+import Insta from "/src/assets/Instagram Circle.svg"
+import Logo from '/src/assets/footer-section/invi-logo.svg'
 
 export default function Paymentsuccess({ mailId }) {
   const [timer, setTimer] = useState(300); // 300 seconds = 5 minutes
@@ -45,11 +48,11 @@ export default function Paymentsuccess({ mailId }) {
             <div className="link">
               <div className="follow-section">Follow us for regular updates about the event</div>
               <p className="payment">
-                <img src="/src/assets/WhatsApp.svg" alt="" className="whatsapp" />
+                <img src={Whatsapp} alt="" className="whatsapp" />
                 Join WhatsApp community
               </p>
               <p className="payment">
-                <img src="/src/assets/Instagram Circle.svg" alt="" className="instagram" />
+                <img src={Insta} alt="" className="instagram" />
                 Follow us on Instagram
               </p>
             </div>
@@ -60,9 +63,9 @@ export default function Paymentsuccess({ mailId }) {
                 <h3>Event Sponsor's</h3>
             </div>
             <div className="img-logo-container">
-                <img src="/src/assets/procreate 3.svg" alt="" className="logo" />
-                <img src="/src/assets/procreate 3.svg" alt="" className="logo" />
-                <img src="/src/assets/procreate 3.svg" alt="" className="logo" />
+                <img src="g" alt="" className="logo" />
+                <img src={Logo} alt="" className="logo" />
+                <img src="" alt="" className="logo" />
             </div>
             
           </div>
