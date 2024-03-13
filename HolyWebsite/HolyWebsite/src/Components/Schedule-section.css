@@ -94,6 +94,10 @@
     letter-spacing: 1px;
     padding: 1rem 4.8rem;
     cursor: pointer;
+    z-index: 999;
+  }
+  #root{
+    z-index: -999;
   }
   
   @media (width<=650px) {

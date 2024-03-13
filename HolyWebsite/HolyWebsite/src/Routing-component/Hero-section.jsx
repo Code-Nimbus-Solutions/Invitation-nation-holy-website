@@ -15,7 +15,7 @@ export default function HeroSection() {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const response = await axios.get('http://192.168.0.105:8080/rest/api/public/ctlanding');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/ctlanding`);
         if (response.data.responceId === "OS" && response.data.responce === "Operation Successfully") {
           console.log("Success Landing");
         } else {

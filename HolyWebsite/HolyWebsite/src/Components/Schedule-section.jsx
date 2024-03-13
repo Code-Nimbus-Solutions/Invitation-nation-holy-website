@@ -57,7 +57,7 @@ const ScheduleSection = () => {
                 </span>
               </div>
             </div>
-            <Link to="/payment" style={{ textDecoration: "none" }}>
+            <Link to="/payment" style={{ textDecoration: "none" ,zIndex:9999}}>
               <button className="schedule-btn">Book Tickets Now</button>
             </Link>
           </div>

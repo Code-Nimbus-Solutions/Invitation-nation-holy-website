@@ -10,7 +10,7 @@ export default function Payment() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.0.105:8080/rest/api/public/ctbook');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/ctbook`);
         if (response.data.responceId === "OS" && response.data.responce === "Operation Successfully") {
           console.log("Success Payment");
         } else {
