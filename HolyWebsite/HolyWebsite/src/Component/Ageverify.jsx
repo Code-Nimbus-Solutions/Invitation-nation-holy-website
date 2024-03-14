@@ -212,7 +212,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
           console.log('Operation successful:', data.responce);
           // Update UI to reflect the successful operation
           // For example, you can show a success message to the user
-          alert('Operation successful: ' + data.responce);
+          alert('Added to cart');
   
           // After the second API request is completed successfully,
           // fetch confirmation data and then set the active tab to 'payment'
@@ -282,14 +282,14 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
   
   
   const Globalvalue = (pass) => {
-    if(pass === "pass_type_1" ) {
-      return "Premium Pass"
+    if(pass === "pass_type_1") {
+      return "Premium Pass";
     }
-    if(pass === "pass_type_2" ) {
-      return "Gold Pass"
+    if(pass === "pass_type_2") {
+      return "Elite Pass";
     }
-    if(pass === "pass_type_3" ) {
-      return "Silver Pass"
+    if(pass === "pass_type_3") {
+      return "Standard Pass";
     }
   }
   return (
@@ -359,7 +359,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
     {/* Render purchased data */}
     <ul>
     {confirmationData.pass_selected.map((pass, index) => (
-        <li key={index}>
+        <li key={index} style={{listStyle:'none',fontWeight:600 , fontSize:'2rem'}}>
           {Globalvalue(pass)} {/* Render pass type using the Globalvalue function */}
         </li>
       ))}

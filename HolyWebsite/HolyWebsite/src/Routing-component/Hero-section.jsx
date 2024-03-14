@@ -54,7 +54,7 @@ export default function HeroSection() {
               <div className="extra-div"></div>
               <div className="hero-info-box">
                 <h2 className="hero-title">United Colors of</h2>
-                <h2 className="hero-title-blue">Bangalore.</h2>
+                <h2 className="hero-title-blue">Bangalore</h2>
                 <p className="hero-subtitle">
                   Your Favourite Holi event is coming to Bangalore on
                 </p>

@@ -83,13 +83,14 @@
 }
 
 .otp-section input {
-    padding: 0.3rem;
+    padding: 0.5rem;
    
     height: 20px;
     background-color: transparent;
     color: #000;
     border: 1px solid #999999;
 }
+
 .otp-main{
     display: flex;
     float: left;
