@@ -131,7 +131,7 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
                 <p>A copy of the tickets will be sent to the below email</p>
               </div>
               <div className="details-fld">
-                <label htmlFor="Name">Name<span>*</span></label>
+                <label htmlFor="Name" >Name<span>*</span></label>
                 <input type="text" name="name" placeholder="Name" className='Name' value={formData.name} onChange={handleInputChange} />
                 <label htmlFor="mail-id">Mail id<span>*</span></label>
                 <input type="text" name="Mailid" className="mail-id" placeholder='mail id' value={formData.Mailid} onChange={handleInputChange}  />

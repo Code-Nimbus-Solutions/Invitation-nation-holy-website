@@ -63,9 +63,9 @@ export default function Paymentsuccess({ mailId }) {
                 <h3>Event Sponsor's</h3>
             </div>
             <div className="img-logo-container">
-                <img src="g" alt="" className="logo" />
+               
                 <img src={Logo} alt="" className="logo"  />
-                <img src="" alt="" className="logo" />
+             
             </div>
             
           </div>

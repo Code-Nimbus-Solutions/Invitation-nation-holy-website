@@ -101,62 +101,80 @@ export default function CartCard({ productName }) {
   };
   
   const Globalvalue = (type) => {
-    if(type === "pass_type_1") {
+    if (type === "pass_type_1") {
       return "Premium Pass";
     }
-    if(type === "pass_type_2") {
+    if (type === "pass_type_2") {
       return "Elite Pass";
     }
-    if(type === "pass_type_3") {
+    if (type === "pass_type_3") {
       return "Standard Pass";
     }
-  }
-
+  };
+  
   return (
     <div className="main-cart-card">
       <div className="card-container">
         {currentState === 'display' && offerData && (
           <>
-            {Object.keys(offerData.pass_price).map((type, i) => {
-              const originalPrice = offerData.pass_price[type];
-              const discountPercentage = offerData.offer_persent;
-              const discountedPrice = Math.floor(originalPrice - (originalPrice * (discountPercentage / 100)));
-              return (
-                <><div className="cart-card" key={i}>
-                  <div className="product-name">
-                    <h1 value={type}>{Globalvalue(type)}</h1>
-                    <h2>
-                      <p className="dis">₹{Math.floor(originalPrice)}</p>
-                      <p>₹{discountedPrice}</p>
-                    </h2>
-                  </div>
-                  <div className="order-basket">
-                    <div className="quantity-controls">
-                      <button onClick={() => handleDecrement(i)}>-</button>
-                      <span className="quantity">{quantity[i] || 0}</span>
-                      <button onClick={() => handleIncrement(i)}>+</button>
-                    </div>
-                    <button className="add-button" onClick={() => handleIncrement(i)}>Add</button>
-                  </div>
-                </div><div className="dropdown-container">
-                    <div className="dropdown-header" onClick={() => handleToggleDropdown(i)}>
-                      <span>{selectedOption}</span>
-                      <i className={`fas fa-chevron-${openDropdowns[i] ? 'up' : 'down'}`}></i>
-                    </div>
-                    {openDropdowns[i] && (
-                      <div className="dropdown-list">
-                        <div><i className="fa-solid fa-check"></i>   Free lunch ( Veg & Non veg )</div>
-                        <div><i className="fa-solid fa-check"></i>   Free Organic Colors</div>
-                        <div><i className="fa-solid fa-check"></i>   Free Access to Rain dance</div>
-                        <div><i className="fa-solid fa-check"></i>   Access to Paid Fun Activities</div>
-                        <div className='Priced'><i className="fa-solid fa-check"></i>  Free Drink</div>
-                        <div className='Priced'><i className="fa-solid fa-check"></i>  Free T-shirt ( White )</div>
-                        <button className="close-drop" onClick={() => handleToggleDropdown(i)}>Close</button>
-                      </div>
-                    )}
-                  </div></>
-              );
-            })}
+         {Object.keys(offerData.pass_price).map((type, i) => {
+  const originalPrice = offerData.pass_price[type];
+  const discountPercentage = offerData.offer_persent;
+  const discountedPrice = Math.floor(originalPrice - (originalPrice * (discountPercentage / 100)));
+
+  // Define additional items for Premium Pass and Elite Pass
+  const additionalItems = ['pass_type_1'].includes(type) ? (
+    <>
+      <div className='Priced'><i className="fa-solid fa-check"></i>  Free Drink</div>
+      <div className='Priced'><i className="fa-solid fa-check"></i>  Free T-shirt ( White )</div>
+    </>
+  ) : null;
+  const additionalItems2 = ['pass_type_2'].includes(type) ? (
+    <>
+      <div className='Priced'><i className="fa-solid fa-check"></i>  Free Drink</div>
+     
+    </>
+  ) : null;
+
+  return (
+    <>
+      <div className="cart-card" key={i}>
+        <div className="product-name">
+          <h1 value={type}>{Globalvalue(type)}</h1>
+          <h2>
+            <p className="dis">₹{Math.floor(originalPrice)}</p>
+            <p>₹{discountedPrice}</p>
+          </h2>
+        </div>
+        <div className="order-basket">
+          <div className="quantity-controls">
+            <button onClick={() => handleDecrement(i)}>-</button>
+            <span className="quantity">{quantity[i] || 0}</span>
+            <button onClick={() => handleIncrement(i)}>+</button>
+          </div>
+          <button className="add-button" onClick={() => handleIncrement(i)}>Add</button>
+        </div>
+      </div>
+      <div className="dropdown-container">
+        <div className="dropdown-header" onClick={() => handleToggleDropdown(i)}>
+          <span>{selectedOption}</span>
+          <i className={`fas fa-chevron-${openDropdowns[i] ? 'up' : 'down'}`}></i>
+        </div>
+        {openDropdowns[i] && (
+          <div className="dropdown-list">
+            <div><i className="fa-solid fa-check"></i>   Free lunch ( Veg & Non veg )</div>
+            <div><i className="fa-solid fa-check"></i>   Free Organic Colors</div>
+            <div><i className="fa-solid fa-check"></i>   Free Access to Rain dance</div>
+            <div><i className="fa-solid fa-check"></i>   Access to Paid Fun Activities</div>
+            {additionalItems}
+            {additionalItems2}
+            <button className="close-drop" onClick={() => handleToggleDropdown(i)}>Close</button>
+          </div>
+        )}
+      </div>
+    </>
+  );
+})}
             <button className="next" onClick={handleNextClick}>Next</button>
           </>
         )}

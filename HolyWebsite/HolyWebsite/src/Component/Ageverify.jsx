@@ -358,9 +358,12 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
   <div>
     {/* Render purchased data */}
     <ul>
-    {confirmationData.pass_selected.map((pass, index) => (
-        <li key={index} style={{listStyle:'none',fontWeight:600 , fontSize:'2rem'}}>
-          {Globalvalue(pass)} {/* Render pass type using the Globalvalue function */}
+      {Object.entries(confirmationData.pass_selected.reduce((acc, pass) => {
+        acc[pass] = (acc[pass] || 0) + 1;
+        return acc;
+      }, {})).map(([pass, count]) => (
+        <li key={pass} style={{ listStyle: 'none', fontWeight: 600, fontSize: '2rem' }}>
+          {Globalvalue(pass)} × {count} {/* Render pass type and its count */}
         </li>
       ))}
     </ul>

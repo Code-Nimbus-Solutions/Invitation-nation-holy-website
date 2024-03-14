@@ -64,6 +64,9 @@
 .details-fld label span {
     color: red;
 }
+.details-fld label{
+    font-size: 12px;
+}
 
 .details-fld input {
     width: 90%;
