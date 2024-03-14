@@ -113,13 +113,14 @@
     width: 90vw;
     border-bottom: 1px solid rgba(187, 179, 179, 0.467);
 }
-.subtotal ,.gst, .total{
+.subtotal ,.gst, .total , .handling{
     display: flex;
     justify-content: space-between;
     padding: 0.5rem;
 }
 .total{
     font-weight: 800;
+    padding: 1rem 0;
 }
 .razor-pay{
     text-align: center;
@@ -138,6 +139,7 @@
 }
 .coupons-input button{
     width: auto;
+    border-radius: 4px;
 }
 .total-quantity{
     text-align: center;
@@ -184,6 +186,11 @@
     box-shadow: #000000 5px 5px 0px 5px;
     border: none;
     cursor: pointer;
+  }
+  .main-payment{
+    font-size: 2rem;
+    text-align: left;
+
   }
   .Next-ph2 {
     width: 30rem;

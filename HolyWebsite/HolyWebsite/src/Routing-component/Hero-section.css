@@ -76,7 +76,7 @@ nav {
 .hero-title {
   font-family: Aemstel;
   font-size: 4rem;
-  text-align: left;
+  text-align: right;
 }
 
 .hero-title-blue {
@@ -85,7 +85,7 @@ nav {
   color: #1989c1;
   font-family: Heaters;
   font-size: 16vw;
-  text-align: left;
+  text-align: right;
   line-height: 0.75;
 }
 
@@ -93,12 +93,12 @@ nav {
   font-family: Poppins;
   font-size: 2.4rem;
   font-weight: 400;
-  text-align: left;
+  text-align: right;
 }
 
 .hero-date-box {
   display: flex;
-  text-align: left;
+  text-align: right;
   align-items: center;
   justify-content: center;
   gap: 2rem;
@@ -110,7 +110,7 @@ nav {
   font-family: Aemstel;
   font-size: 4rem;
   font-weight: 400;
-  text-align: left;
+  text-align: right;
   color: #87d7ff;
 }
 .date-time{
@@ -120,11 +120,12 @@ nav {
   align-items: center;
   font-size: 2rem;
   font-weight: 600;
+  text-align: right;
 }
 .hero-time{
   font-size: 2rem;
   font-weight: 600;
-  text-align: center;
+  text-align: right;
   
 
 }
