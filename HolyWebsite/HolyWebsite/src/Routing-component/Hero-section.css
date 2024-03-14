@@ -84,7 +84,7 @@ nav {
   height: 100%;
   color: #1989c1;
   font-family: Heaters;
-  font-size: 16vw;
+  font-size: 14vw;
   text-align: right;
   line-height: 0.75;
 }
@@ -108,10 +108,11 @@ nav {
 .hero-date-day,
 .hero-date-date {
   font-family: Aemstel;
-  font-size: 4rem;
+  font-size: 3.6rem;
   font-weight: 400;
   text-align: right;
   color: #87d7ff;
+  width: fit-content;
 }
 .date-time{
   display: flex;
@@ -144,6 +145,13 @@ nav {
   letter-spacing: 1px;
   padding: 1rem 4.8rem;
   cursor: pointer;
+}
+
+@media(width>1280px){
+  .hero-title-blue{
+     font-size: 20rem;
+  }
+ 
 }
 
 @media (width<=650px) {
