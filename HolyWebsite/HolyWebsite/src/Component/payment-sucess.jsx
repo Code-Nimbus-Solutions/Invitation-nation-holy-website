@@ -49,7 +49,7 @@ export default function Paymentsuccess({ mailId }) {
               <div className="follow-section">Follow us for regular updates about the event</div>
               <p className="payment">
                 <img src={Whatsapp} alt="" className="whatsapp" />
-                Join WhatsApp community
+               <a href="https://chat.whatsapp.com/ECDenjyiB1SIxG82AszrQx" style={{textDecoration:'none' ,color: "#1989C1",fontWeight:"700"}} className='whatsapp'>Join WhatsApp community</a> 
               </p>
               <p className="payment">
                 <img src={Insta} alt="" className="instagram" />
