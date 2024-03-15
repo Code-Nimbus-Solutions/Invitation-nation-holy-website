@@ -59,9 +59,9 @@ export default function HeroSection() {
                   Your Favourite Holi event is coming to Bangalore on
                 </p>
                 <div className="hero-date-box">
-                  <span className="hero-date-day">Sunday </span>
+                  {/* <span className="hero-date-day">Sunday </span> */}
                   <div className="date-time">
-                     <span className="hero-date-date">24th March, 2024</span>
+                     <span className="hero-date-date">Sunday | 24th March, 2024</span>
                
                     </div>  
                  

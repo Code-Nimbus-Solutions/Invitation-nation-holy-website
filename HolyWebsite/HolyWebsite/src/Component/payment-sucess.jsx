@@ -64,7 +64,7 @@ export default function Paymentsuccess({ mailId }) {
             </div>
             <div className="img-logo-container">
                
-                <img src={Logo} alt="" className="logo"  />
+                <img src={Logo} alt="" className="logo1"  />
              
             </div>
             
