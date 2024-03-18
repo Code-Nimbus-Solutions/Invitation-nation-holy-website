@@ -43,7 +43,7 @@ export default function Paymentsuccess({ mailId }) {
             <p>{mailId}</p>
           </div>
           <div className="info-container">
-            <p className="nextstep">To claim the offer, complete the payment in </p>
+            <p className="nextstep">To claim the offer complete the payment in </p>
             <p className='timer-sucess'>{minutes}M  {seconds}S</p>
             <div className="link">
               <div className="follow-section">Follow us for regular updates about the event</div>

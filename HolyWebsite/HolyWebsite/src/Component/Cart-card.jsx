@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../CSSfiles/Cart.css';
 import PhoneNumber from './Phone-number';
+import trust1 from '/src/assets/SVG.svg'
+import trust2 from '/src/assets/SVG-1.svg'
+import trust3 from '/src/assets/SVG-2.svg'
 
 export default function CartCard({ productName }) {
   const [quantity, setQuantity] = useState([0,0,0]);
@@ -143,21 +146,21 @@ export default function CartCard({ productName }) {
           <h1 value={type}>{Globalvalue(type)}</h1>
           <h2>
             <p className="dis">₹{Math.floor(originalPrice)}</p>
-            <p>₹{discountedPrice}</p>
+            <p className='original-prse'>₹{discountedPrice}</p>
           </h2>
         </div>
         <div className="order-basket">
           <div className="quantity-controls">
-            <button onClick={() => handleDecrement(i)}>-</button>
+            <button onClick={() => handleDecrement(i)} className='minus-btn'>-</button>
             <span className="quantity">{quantity[i] || 0}</span>
-            <button onClick={() => handleIncrement(i)}>+</button>
+            <button onClick={() => handleIncrement(i)} className='plus-btn'>+</button>
           </div>
           <button className="add-button" onClick={() => handleIncrement(i)}>Add</button>
         </div>
       </div>
       <div className="dropdown-container">
         <div className="dropdown-header" onClick={() => handleToggleDropdown(i)}>
-          <span>{selectedOption}</span>
+          <span className='see-wi'>{selectedOption}</span>
           <i className={`fas fa-chevron-${openDropdowns[i] ? 'up' : 'down'}`}></i>
         </div>
         {openDropdowns[i] && (
@@ -175,6 +178,17 @@ export default function CartCard({ productName }) {
     </>
   );
 })}
+<div className="turst-container">
+  <div className="trust-sub-sont">
+    <img src={trust1} alt="" className="trust1" />
+    <p>100% Secure Transaction</p>
+    <img src={trust2} alt="" className="trust1" />
+    <p>100% Secure Transaction</p>
+    <img src={trust3} alt="" className="trust1" />
+    <p>100% Secure Transaction</p>
+  </div>
+  
+</div>
             <button className="next" onClick={handleNextClick}>Next</button>
           </>
         )}

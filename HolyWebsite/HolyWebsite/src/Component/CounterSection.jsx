@@ -85,7 +85,7 @@ export default function CounterSection() {
         <div className="countercard">
           {offerData && (
             <>
-              <p>{offerData.offer_name}</p>
+              <p className='counter-heading'>One step away from the best holi party of 2024</p>
               <div className="progress-bar">
                 <div className="progress" style={{ width: `${timeLeft.progress}%` }}></div>
               </div>

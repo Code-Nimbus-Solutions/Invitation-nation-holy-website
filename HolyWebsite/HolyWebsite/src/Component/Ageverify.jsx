@@ -316,7 +316,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
             {activeTab === 'details' && (
               <div>
                 <div className="main-input-container">
-                  <label htmlFor="Mail">Number</label>
+                  <label htmlFor="Mail">Number <span className='number-star'>*</span></label>
                   <input
                     type="number"
                     className="Mail"
@@ -333,10 +333,20 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
                     onChange={handleAgeChange}
                   />
                 </div>
-                <p className='total-quantity'>Total Quantity of Purchased Tickets: {totalQuantity}</p>
+                <div className="total-veg-nonveg-section">
+
+               <div className="nondynamic-age">
+                 <p className='total-quantity'>Total Tickets</p>
+                 <p className="ticket-num">{totalQuantity}</p>
+               </div>
+               
+                 <div className="seperation">
+                <p>|</p>
+               </div>
                 <div className="veg-nonveg">
+                 
                   <div className="veg-vegsection">
-                    <p>No of veg lunch</p>
+                    <p>No of <span className="veg-thng">veg</span>  lunch</p>
                     <div className="dynamic-part">
                       <button className="minus" value="NOTOPTED" onClick={handleDecrementVeg}>-</button>
                       <h1 value="NOTOPTED">{formDataDetails.vegCount}</h1>
@@ -344,7 +354,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
                     </div>
                   </div>
                   <div className="nonvegsection">
-                    <p>No of Non-veg lunch</p>
+                    <p>No of <span className='nonveg-thng'>Non-veg</span> lunch</p>
                     <div className="dynamic-part">
                       <button className="minus" value="NONVEG" onClick={handleDecrementNonVeg}>-</button>
                       <h1 >{formDataDetails.nonVegCount}</h1>
@@ -352,7 +362,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> </div>
             )}
         {activeTab === 'payment' && confirmationData && (
   <div>
