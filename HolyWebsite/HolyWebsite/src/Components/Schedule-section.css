@@ -59,6 +59,8 @@
   .schedule-element {
     display: flex;
     align-items: center;
+    gap: 2rem;
+
     /* gap: 1rem; */
   }
   
@@ -76,17 +78,19 @@
     background-color: #2bb8ff;
     padding-bottom: 2px;
     width: 100%;
+    display: none;
   }
   
   .schedule-element-title {
     font-family: Poppins;
     font-size: 1.8rem;
-    text-align: right;
+    text-align: left;
     white-space: nowrap;
-    color: #fff;
+    color: #000000;
     padding: 1rem;
     border: 2px solid #000;
     background-color: #1989c1;
+    width: 100%;
   }
   
   .schedule-btn {
@@ -99,6 +103,7 @@
     padding: 1rem 4.8rem;
     cursor: pointer;
     z-index: 3;
+    text-wrap: nowrap;
   }
 
   
@@ -109,5 +114,9 @@
   
     .schedule-element-title {
       white-space: wrap;
+    }
+    .schedule-decoration-left,
+    .schedule-decoration-right {
+      display: none;
     }
   }
