@@ -15,6 +15,7 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
     };
   });
   const [isInputsFilled, setIsInputsFilled] = useState(false);
+  const [otpSent, setOtpSent] = useState(false); // New state to track OTP sending status
 
   useEffect(() => {
     // Save form data to localStorage whenever it changes
@@ -57,6 +58,7 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
     .then(response => response.json())
     .then(data => {
       if (data && data.responceId === 'OSS') {
+        setOtpSent(true); // Update state when OTP sent successfully
         alert('OTP sent successfully');
       } else {
         alert('Failed to send OTP. Please try again.');
@@ -92,7 +94,7 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
       name: formData.name,
       otp: formData.otp
     };
-  console.log(postData)
+    console.log(postData)
     // Send a POST request to verify the OTP
     fetch(`${import.meta.env.VITE_SERVER_URL}/rest/api/public/user-validation`, {
       method: 'POST',
@@ -138,20 +140,20 @@ export default function PhoneNumber({ purchasedData ,productName,  packagesData,
               </div>
               <div className="otp-main">
                  <div className="otp-section">
-                <input type="text" name="otp" className='otpnumber' placeholder='4 digit OTP'  value={formData.otp} onChange={handleInputChange} />
-                <button className='send-otp' disabled={!isButtonActive} onClick={handleSendOTP}>
-                  {isButtonActive ? <p className='otp-active'>Send OTP</p> : <p className='no-otp'>Send OTP</p>}
-                </button>
+                  <input type="text" name="otp" className='otpnumber' placeholder='4 digit OTP'  value={formData.otp} onChange={handleInputChange} />
+                  <button className='send-otp' disabled={!isButtonActive} onClick={handleSendOTP}>
+                    {isButtonActive ? <p className='otp-active'>Send OTP</p> : <p className='no-otp'>Send OTP</p>}
+                  </button>
+                </div>
               </div>
-              </div>
-             
-              <p className='otp-description'>OTP has been sent to your Email</p>
-              <p className='otp-timer'>Resend OTP in {timer}secs</p>
+              {otpSent && ( // Conditionally render OTP description and timer based on otpSent state
+                <>
+                  <p className='otp-description'>OTP has been sent to your Email</p>
+                  <p className='otp-timer'>Resend OTP in <span className='timer-phonenumber'>{timer}secs</span></p>
+                </>
+              )}
             </div>
-           
-               <button className={`Next-ph ${isInputsFilled ? 'filled' : ''}`} onClick={handleNextClick}>Next</button>
-        
-           
+            <button className={`Next-ph ${isInputsFilled ? 'filled' : ''}`} onClick={handleNextClick}>Next</button>
           </>
         )}
       </div>

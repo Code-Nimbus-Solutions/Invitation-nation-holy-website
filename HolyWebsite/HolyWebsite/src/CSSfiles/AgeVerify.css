@@ -6,7 +6,7 @@
     text-align: center;
     align-items: center;
     border-radius:10px 10px 0px 0px ;
-    background-color: rgb(216, 216, 216);
+    background-color: #F4F4F4;
     font-size: 12px;
 }
 
@@ -61,26 +61,49 @@
 .veg-vegsection {
     display: flex;
     flex-direction: column;
+    margin: 3rem;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .nonvegsection {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .veg-nonveg {
     display: flex;
-    width: 100%;
+    
+    width: 50%;
     justify-content: space-evenly;
     align-items: center;
+    gap: 0rem;
 
 }
 
 .dynamic-part {
     display: flex;
+    margin: 2rem;
+    gap: 2rem;
 }
-
+.number-star{
+    color: red;
+}
+.nondynamic-age{
+text-align: center;
+}
+.ticket-num{
+    font-size: 30px;
+    font-weight: 600;
+    color: #1989C1;
+}
+.total-quantity{
+    display: flex;
+    font-weight: 600;
+}
 .main-age-section {
     display: flex;
     flex-direction: column;
@@ -95,6 +118,14 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.252);
     padding: 1rem;
     gap: 40%;
+}
+.veg-thng{
+    color: #1989C1;
+    font-weight: 700;
+}
+.nonveg-thng{
+    color: #1989C1;
+    font-weight: 700;
 }
 
 .Product-name {
@@ -125,7 +156,8 @@
 .razor-pay{
     text-align: center;
     padding: 1rem;
-    background-color: rgb(195, 196, 197);
+    background-color: #F7F7F7;
+    width: 100%;
 }
 .coupons-input{
     display: flex;
@@ -201,19 +233,30 @@
     font-weight: 600;
     border-radius: 15px;
     color: #000000;
-    background-color: #FF5338;
+    background-color: #8B0000;
     box-shadow: #000000 5px 5px 0px 5px;
     border: none;
     cursor: pointer;
     font-family: "Montserrat", sans-serif;
     
   }
-
+  .total-veg-nonveg-section{
+    display: flex;
+    justify-content: center;
+  }
+.seperation{
+    font-size: 50px;
+    font-weight: 100;
+}
   @media(width<37.5rem){
     .Next-ph1{
         width: 40rem;
     }
     .Next-ph2{
         width: 40rem;
+    }
+    .veg-nonveg{
+        display: flex;
+        flex-direction: column;
     }
   }

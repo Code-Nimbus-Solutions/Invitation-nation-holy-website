@@ -49,7 +49,7 @@
     text-align: center;
     font-weight: 600;
     padding: 2rem;
-    color: blueviolet;
+    color: rgb(0, 0, 0);
     width: 80%;
 }
 
@@ -103,10 +103,20 @@
 
 .otp-section button {
     cursor: pointer;
+    background-color: transparent;
+    padding: 0.5rem;
 }
 
 .no-otp {
     color: gray;
+    border-radius: 15px;
+    border: 2px solid gray;
+    font-size: 10px;
+    background-color: white;
+    font-weight: 600;
+    padding: 0.7rem;
+    
+    
 }
 
 .otp-description {
@@ -114,13 +124,36 @@
     font-size: 10px;
     font-weight: 700;
     padding: 1rem;
+    color: #1989C1;
+}
+.timer-phonenumber{
+    color: #1989C1;
+    font-weight: 700;
 }
 
 .otp-timer {
     padding: 1rem;
     font-size: 12px;
 }
+/* .send-otp{
+    border-radius: 15px;
+    border: 2px solid #1989C1;
+    font-size: 10px;
+    color: #1989C1;
+    background-color: white;
+    font-weight: 600;
+} */
 
+.otp-active{
+    border-radius: 15px;
+    border: 2px solid #1989C1;
+    font-size: 10px;
+    color: #1989C1;
+    background-color: white;
+    font-weight: 600;
+    padding: 0.7rem;
+
+}
 .Next-ph {
     width: 30rem;
     font-size: 40px;
@@ -138,8 +171,9 @@
   
   
 }
+
 .Next-ph {
-    background-color: #FF5338;
+    background-color: #8B0000;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -161,6 +195,6 @@
 
 @media(width<600px){
     .Next-ph{
-        width: 90%;
+        width: 100%;
     }
 }
