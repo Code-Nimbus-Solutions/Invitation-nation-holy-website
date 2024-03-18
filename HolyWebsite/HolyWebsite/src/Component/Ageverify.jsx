@@ -316,7 +316,7 @@ export default function AgeVerify({ purchasedData, setPurchasedData, mailId, pro
             {activeTab === 'details' && (
               <div>
                 <div className="main-input-container">
-                  <label htmlFor="Mail">Number <span className='number-star'>*</span></label>
+                  <label htmlFor="Mail">Phone Number <span className='number-star'>*</span></label>
                   <input
                     type="number"
                     className="Mail"
