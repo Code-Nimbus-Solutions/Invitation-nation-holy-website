@@ -157,6 +157,7 @@ option{
     color: #1989C1;
     font-weight: 700;
     font-family: "Montserrat", sans-serif;
+    border-radius: 4px;
 }
 .turst-container{
     display: flex;

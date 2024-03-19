@@ -53,7 +53,7 @@ const CountdownSection = () => {
             <h3 className="count-down-price-title">Sale : {offerPercentage}% Discount</h3>
             {/* Assuming the original price is 1799 */}
             <p className="count-down-price-value">
-              <s>1799</s> ₹899
+              <s>799</s> ₹399
             </p>
             <span>Onwards</span>
           </div>

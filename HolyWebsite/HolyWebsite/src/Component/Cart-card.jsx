@@ -183,9 +183,9 @@ export default function CartCard({ productName }) {
     <img src={trust1} alt="" className="trust1" />
     <p>100% Secure Transaction</p>
     <img src={trust2} alt="" className="trust1" />
-    <p>100% Secure Transaction</p>
+    <p>Your Data is Highly Secure</p>
     <img src={trust3} alt="" className="trust1" />
-    <p>100% Secure Transaction</p>
+    <p>User Trusted Product</p>
   </div>
   
 </div>
